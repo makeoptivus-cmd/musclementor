@@ -1,0 +1,139 @@
+<!-- EMAILJS TEMPLATE HTML COPY -->
+<!-- Copy and paste this HTML into your EmailJS template editor -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>New Contact Form Submission - Muscle Mentors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .info-section {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .value {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #eee;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        .priority {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏋️ New Contact Form Submission</h1>
+        <p>Muscle Mentors - Client Inquiry</p>
+    </div>
+    
+    <div class="content">
+        <div class="info-section">
+            <h2>📋 Client Information</h2>
+            <div class="value">
+                <span class="label">Name:</span>
+                {{name}}
+            </div>
+            <div class="value">
+                <span class="label">Email:</span>
+                <a href="mailto:{{email}}">{{email}}</a>
+            </div>
+            <div class="value">
+                <span class="label">Phone:</span>
+                <a href="tel:{{phone}}">{{phone}}</a>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2>🎯 Interest Details</h2>
+            <div class="value">
+                <span class="label">Interested In:</span>
+                {{interests}}
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h2>💬 Additional Message</h2>
+            <div class="value">
+                {{message}}
+            </div>
+        </div>
+        
+        <div class="priority">
+            <h3>⚡ Action Required</h3>
+            <p>Please follow up with this client within 24 hours to maintain our excellent customer service standards.</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>Muscle Mentors</strong> - Premium Gym Training Education</p>
+        <p>This email was automatically generated from your website contact form.</p>
+        <p>Received on: {{date}}</p>
+    </div>
+</body>
+</html>
+
+<!-- 
+EMAILJS TEMPLATE VARIABLES USED:
+- {{name}} - Client's full name
+- {{email}} - Client's email address  
+- {{phone}} - Client's phone number
+- {{interests}} - Selected interest/program
+- {{message}} - Additional message (optional)
+
+TEMPLATE SETTINGS:
+1. Subject Line: "New Contact Form Submission from {{name}} - {{interests}}"
+2. From Name: "Muscle Mentors Website"
+3. Reply To: "{{email}}"
+
+INSTRUCTIONS:
+1. Copy this entire HTML code
+2. Go to your EmailJS dashboard
+3. Navigate to Email Templates
+4. Create a new template or edit existing one
+5. Paste this HTML into the template editor
+6. Update the template variables in the subject line and settings
+7. Save the template
+8. Use template ID: template_hty85vh (or create new one and update in your code)
+-->

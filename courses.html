@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Muscle Mentors</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="IMG_3663-removebg-preview.png" alt="Muscle Mentors Logo" class="logo-img">
+                <span class="logo-text">Muscle Mentors</span>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link active">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training-fees.html" class="nav-link">Training & Fees</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item cta-item">
+                    <a href="courses.html" class="nav-link cta-btn">Browse Courses</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Training Courses</h1>
+                <p class="page-subtitle"style="color: white;">Comprehensive fitness programs designed to help you achieve your goals</p>
+                <nav class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Courses</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Filters -->
+    <section class="course-filters">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Courses</button>
+                <button class="filter-tab" data-filter="beginner">Beginner</button>
+                <button class="filter-tab" data-filter="intermediate">Intermediate</button>
+                <button class="filter-tab" data-filter="advanced">Advanced</button>
+                <button class="filter-tab" data-filter="nutrition">Nutrition</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="courses-grid">
+                <!-- Foundation Fitness Course -->
+                <div class="course-card" data-category="beginner">
+                    <div class="course-image">
+                        <div class="course-badge beginner">Beginner</div>
+                        <div class="course-overlay">
+                            <a href="#" class="course-preview-btn">Preview Course</a>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-meta">
+                            <span class="course-duration"><i class="fas fa-clock"></i> 8 Weeks</span>
+                            <span class="course-students"><i class="fas fa-users"></i> 150+ Students</span>
+                        </div>
+                        <h3 class="course-title">Foundation Fitness</h3>
+                        <p class="course-description">Perfect for beginners starting their fitness journey. Learn proper form, basic exercises, and build a strong foundation for long-term success.</p>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Basic exercise techniques</li>
+                                <li><i class="fas fa-check"></i> Proper form instruction</li>
+                                <li><i class="fas fa-check"></i> Beginner-friendly workouts</li>
+                                <li><i class="fas fa-check"></i> Safety guidelines</li>
+                            </ul>
+                        </div>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <span class="instructor-name">Coach Sarah Miller</span>
+                                <div class="instructor-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-text">4.9 (89 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">₹9900</span>
+                            <span class="price-period">/8 weeks</span>
+                        </div>
+                        <a href="payment.html?plan=foundation&amount=9900&label=Foundation%20Fitness%20by%20Coach%20Sarah%20Miller" class="btn btn-primary btn-full" data-checkout data-plan="foundation" data-amount="9900" data-label="Foundation Fitness by Coach Sarah Miller">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- Muscle Building Mastery Course -->
+                <div class="course-card featured" data-category="intermediate">
+                    <div class="course-image">
+                        <div class="course-badge intermediate">Intermediate</div>
+                        <div class="course-featured-badge">Most Popular</div>
+                        <div class="course-overlay">
+                            <a href="#" class="course-preview-btn">Preview Course</a>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-meta">
+                            <span class="course-duration"><i class="fas fa-clock"></i> 12 Weeks</span>
+                            <span class="course-students"><i class="fas fa-users"></i> 300+ Students</span>
+                        </div>
+                        <h3 class="course-title">Muscle Building Mastery</h3>
+                        <p class="course-description">Comprehensive muscle building program with advanced techniques, progressive overload principles, and complete nutrition guidance.</p>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Advanced training techniques</li>
+                                <li><i class="fas fa-check"></i> Progressive overload strategies</li>
+                                <li><i class="fas fa-check"></i> Nutrition optimization</li>
+                                <li><i class="fas fa-check"></i> Supplement guidance</li>
+                            </ul>
+                        </div>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <span class="instructor-name">Coach Mike Thompson</span>
+                                <div class="instructor-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-text">4.9 (245 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">₹14900</span>
+                            <span class="price-period">/12 weeks</span>
+                        </div>
+                        <a href="payment.html?plan=muscle-building&amount=14900&label=Muscle%20Building%20Mastery%20by%20Coach%20Mike%20Thompson" class="btn btn-primary btn-full" data-checkout data-plan="muscle-building" data-amount="14900" data-label="Muscle Building Mastery by Coach Mike Thompson">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- Weight Loss Transformation Course -->
+                <div class="course-card" data-category="beginner">
+                    <div class="course-image">
+                        <div class="course-badge beginner">Beginner</div>
+                        <div class="course-overlay">
+                            <a href="#" class="course-preview-btn">Preview Course</a>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-meta">
+                            <span class="course-duration"><i class="fas fa-clock"></i> 10 Weeks</span>
+                            <span class="course-students"><i class="fas fa-users"></i> 200+ Students</span>
+                        </div>
+                        <h3 class="course-title">Weight Loss Transformation</h3>
+                        <p class="course-description">Effective weight loss program combining cardio, strength training, and nutrition education for sustainable results.</p>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Cardio optimization</li>
+                                <li><i class="fas fa-check"></i> Strength training for fat loss</li>
+                                <li><i class="fas fa-check"></i> Meal planning guidance</li>
+                                <li><i class="fas fa-check"></i> Habit formation strategies</li>
+                            </ul>
+                        </div>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <span class="instructor-name">Coach Lisa Rodriguez</span>
+                                <div class="instructor-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-text">4.8 (156 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">₹11900</span>
+                            <span class="price-period">/10 weeks</span>
+                        </div>
+                        <a href="payment.html?plan=weight-loss&amount=11900&label=Weight%20Loss%20Transformation%20by%20Coach%20Lisa%20Rodriguez" class="btn btn-primary btn-full" data-checkout data-plan="weight-loss" data-amount="11900" data-label="Weight Loss Transformation by Coach Lisa Rodriguez">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- Elite Performance Course -->
+                <div class="course-card" data-category="advanced">
+                    <div class="course-image">
+                        <div class="course-badge advanced">Advanced</div>
+                        <div class="course-overlay">
+                            <a href="#" class="course-preview-btn">Preview Course</a>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-meta">
+                            <span class="course-duration"><i class="fas fa-clock"></i> 16 Weeks</span>
+                            <span class="course-students"><i class="fas fa-users"></i> 75+ Students</span>
+                        </div>
+                        <h3 class="course-title">Elite Performance</h3>
+                        <p class="course-description">Advanced training for serious athletes and experienced lifters seeking peak performance and competition preparation.</p>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Competition preparation</li>
+                                <li><i class="fas fa-check"></i> Advanced periodization</li>
+                                <li><i class="fas fa-check"></i> Performance optimization</li>
+                                <li><i class="fas fa-check"></i> Recovery protocols</li>
+                            </ul>
+                        </div>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <span class="instructor-name">Coach David Chen</span>
+                                <div class="instructor-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-text">5.0 (42 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">₹19900</span>
+                            <span class="price-period">/16 weeks</span>
+                        </div>
+                        <a href="payment.html?plan=elite-performance&amount=19900&label=Elite%20Performance%20by%20Coach%20David%20Chen" class="btn btn-primary btn-full" data-checkout data-plan="elite-performance" data-amount="19900" data-label="Elite Performance by Coach David Chen">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- Nutrition Mastery Course -->
+                <div class="course-card" data-category="nutrition">
+                    <div class="course-image">
+                        <div class="course-badge nutrition">Nutrition</div>
+                        <div class="course-overlay">
+                            <a href="#" class="course-preview-btn">Preview Course</a>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-meta">
+                            <span class="course-duration"><i class="fas fa-clock"></i> 6 Weeks</span>
+                            <span class="course-students"><i class="fas fa-users"></i> 180+ Students</span>
+                        </div>
+                        <h3 class="course-title">Nutrition Mastery</h3>
+                        <p class="course-description">Complete nutrition education covering macronutrients, meal planning, supplementation, and sustainable eating habits.</p>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Macronutrient education</li>
+                                <li><i class="fas fa-check"></i> Meal planning strategies</li>
+                                <li><i class="fas fa-check"></i> Supplement protocols</li>
+                                <li><i class="fas fa-check"></i> Habit formation</li>
+                            </ul>
+                        </div>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <span class="instructor-name">Dr. Emily Watson</span>
+                                <div class="instructor-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-text">4.9 (128 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">₹7900</span>
+                            <span class="price-period">/6 weeks</span>
+                        </div>
+                        <a href="payment.html?plan=nutrition&amount=7900&label=Nutrition%20Mastery%20by%20Dr.%20Emily%20Watson" class="btn btn-primary btn-full" data-checkout data-plan="nutrition" data-amount="7900" data-label="Nutrition Mastery by Dr. Emily Watson">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- Strength Training Course -->
+                <div class="course-card" data-category="intermediate">
+                    <div class="course-image">
+                        <div class="course-badge intermediate">Intermediate</div>
+                        <div class="course-overlay">
+                            <a href="#" class="course-preview-btn">Preview Course</a>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-meta">
+                            <span class="course-duration"><i class="fas fa-clock"></i> 14 Weeks</span>
+                            <span class="course-students"><i class="fas fa-users"></i> 120+ Students</span>
+                        </div>
+                        <h3 class="course-title">Strength Training Fundamentals</h3>
+                        <p class="course-description">Master the art of strength training with powerlifting techniques, progressive programming, and injury prevention.</p>
+                        <div class="course-features">
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Powerlifting techniques</li>
+                                <li><i class="fas fa-check"></i> Progressive programming</li>
+                                <li><i class="fas fa-check"></i> Injury prevention</li>
+                                <li><i class="fas fa-check"></i> Competition prep</li>
+                            </ul>
+                        </div>
+                        <div class="course-instructor">
+                            <div class="instructor-info">
+                                <span class="instructor-name">Coach Alex Johnson</span>
+                                <div class="instructor-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-text">4.8 (97 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-price">
+                            <span class="price-current">₹12900</span>
+                            <span class="price-period">/14 weeks</span>
+                        </div>
+                        <a href="payment.html?plan=strength-training&amount=12900&label=Strength%20Training%20Fundamentals%20by%20Coach%20Alex%20Johnson" class="btn btn-primary btn-full" data-checkout data-plan="strength-training" data-amount="12900" data-label="Strength Training Fundamentals by Coach Alex Johnson">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Benefits Section -->
+    <section class="course-benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What You Get With Every Course</h2>
+                <p class="section-subtitle">Comprehensive support for your fitness journey</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3 class="benefit-title">Video Lessons</h3>
+                    <p class="benefit-description">High-quality video content with detailed exercise demonstrations and explanations.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Career Support</h3>
+                    <p class="benefit-description">After Courses finished, we provide job and Internship opportunity.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="benefit-title">Tamil Language Support</h3>
+                    <p class="benefit-description">South India first Tamil Language Classes</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="benefit-title">24/7 Support</h3>
+                    <p class="benefit-description">Round-the-clock support from our team of certified fitness professionals.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Life Time Support</h3>
+                    <p class="benefit-description">We provide 10% lifetime support to our students for any queries and doubts.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="benefit-title">Certification</h3>
+                    <p class="benefit-description">We provide certification to our students after completing the course.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Start Your Fitness Journey?</h2>
+                <p class="cta-subtitle"style="color: white;">Join thousands of students who have transformed their bodies with our expert training programs.</p>
+                <div class="cta-buttons">
+                    <a href="payment.html" class="btn btn-primary btn-large">Enroll Now</a>
+                    <a href="training-fees.html" class="btn btn-secondary btn-large">View All Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="IMG_3663-removebg-preview.png" alt="Muscle Mentors Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Muscle Mentors</span>
+                    </div>
+                    <p class="footer-description">Transform your body with expert training and personalized fitness education.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="training-fees.html">Training & Fees</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="courses.html">Foundation Fitness</a></li>
+                        <li><a href="courses.html">Muscle Building</a></li>
+                        <li><a href="courses.html">Weight Loss</a></li>
+                        <li><a href="courses.html">Elite Performance</a></li>
+                        <li><a href="courses.html">Nutrition Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> info@musclementors.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Gym City</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Muscle Mentors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Muscle Mentors</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <!-- Configuration -->
+    <script src="js/config.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="IMG_3663-removebg-preview.png" alt="Muscle Mentors Logo" class="logo-img">
+                <span class="logo-text">Muscle Mentors</span>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training-fees.html" class="nav-link">Training & Fees</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item cta-item">
+                    <a href="courses.html" class="nav-link cta-btn">Select Course</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Payment Section -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-container">
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h2 class="summary-title">Order Summary</h2>
+                    
+                    <!-- Selected Plan -->
+                    <div class="selected-plan" id="selected-plan">
+                        <div class="plan-header">
+                            <h3 class="plan-name">Pro Plan</h3>
+                            <span class="plan-badge">Most Popular</span>
+                        </div>
+                        <div class="plan-details">
+                            <p class="plan-description">Comprehensive training with advanced features</p>
+                            <ul class="plan-features">
+                                <li><i class="fas fa-check"></i> All courses access</li>
+                                <li><i class="fas fa-check"></i> Personal nutrition plans</li>
+                                <li><i class="fas fa-check"></i> Live Q&A sessions</li>
+                                <li><i class="fas fa-check"></i> Priority support</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Billing Cycle -->
+                    <div class="billing-cycle">
+                        <h4 class="cycle-title">Billing Cycle</h4>
+                        <div class="cycle-options">
+                            <label class="cycle-option">
+                                <input type="radio" name="billing" value="monthly" checked>
+                                <span class="cycle-label">
+                                    <span class="cycle-name">Monthly</span>
+                                    <span class="cycle-price">₹149/month</span>
+                                </span>
+                            </label>
+                            <label class="cycle-option">
+                                <input type="radio" name="billing" value="annual">
+                                <span class="cycle-label">
+                                    <span class="cycle-name">Annual</span>
+                                    <span class="cycle-price">₹119/month</span>
+                                    <span class="cycle-savings">Save ₹360/year</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Add-ons -->
+                    <div class="addons-section">
+                        <h4 class="addons-title">Add-on Services</h4>
+                        <div class="addon-options">
+                            <label class="addon-option">
+                                <input type="checkbox" name="addons" value="nutrition">
+                                <span class="addon-label">
+                                    <span class="addon-name">Nutrition Consultation</span>
+                                    <span class="addon-price">+₹79/session</span>
+                                </span>
+                            </label>
+                            <label class="addon-option">
+                                <input type="checkbox" name="addons" value="analysis">
+                                <span class="addon-label">
+                                    <span class="addon-name">Body Composition Analysis</span>
+                                    <span class="addon-price">+₹49/analysis</span>
+                                </span>
+                            </label>
+                            <label class="addon-option">
+                                <input type="checkbox" name="addons" value="recovery">
+                                <span class="addon-label">
+                                    <span class="addon-name">Recovery Protocols</span>
+                                    <span class="addon-price">+₹39/month</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="price-breakdown">
+                        <div class="price-item">
+                            <span class="price-label">Subtotal</span>
+                            <span class="price-value" id="subtotal">₹149.00</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">Tax</span>
+                            <span class="price-value" id="tax">₹11.92</span>
+                        </div>
+                        <div class="price-item discount-item" id="discount-item" style="display: none;">
+                            <span class="price-label">Discount</span>
+                            <span class="price-value" id="discount">-₹30.00</span>
+                        </div>
+                        <div class="price-item total-item">
+                            <span class="price-label">Total</span>
+                            <span class="price-value" id="total">₹160.92</span>
+                        </div>
+                    </div>
+
+                    <!-- Guarantee Badge -->
+                    <div class="guarantee-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>30-day money-back guarantee</span>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="payment-form">
+                    <h2 class="form-title">Payment Details</h2>
+                    
+                    <!-- Account Information -->
+                    <div class="form-section">
+                        <h3 class="section-title">Account Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="form-section payment-info" id="payment-info">
+                        <h3 class="section-title">Payment via Razorpay</h3>
+                        <div class="payment-info-content">
+                            <div class="payment-info-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="payment-info-text">
+                                <h4>Secure Payment Processing</h4>
+                                <p>Your payment will be processed securely through Razorpay. You can choose from multiple payment options including cards, UPI, net banking, and digital wallets.</p>
+                                <div class="supported-methods">
+                                    <span class="method-badge"><i class="fas fa-credit-card"></i> Cards</span>
+                                    <span class="method-badge"><i class="fas fa-mobile-alt"></i> UPI</span>
+                                    <span class="method-badge"><i class="fas fa-university"></i> Net Banking</span>
+                                    <span class="method-badge"><i class="fas fa-wallet"></i> Wallets</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing Address -->
+                    <div class="form-section">
+                        <h3 class="section-title">Billing Address</h3>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="sameAsAccount" checked>
+                                <span class="checkmark"></span>
+                                Same as account information
+                            </label>
+                        </div>
+                        <div id="billing-address" style="display: none;">
+                            <div class="form-group">
+                                <label for="address" class="form-label">Street Address</label>
+                                <input type="text" id="address" class="form-input">
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" id="city" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="state" class="form-label">State</label>
+                                    <input type="text" id="state" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipCode" class="form-label">ZIP Code</label>
+                                    <input type="text" id="zipCode" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="form-section">
+                        <div class="terms-section">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for fitness tips and updates
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-primary btn-large btn-full" id="submit-payment">
+                            <i class="fas fa-credit-card"></i>
+                            Pay with Razorpay
+                        </button>
+                        <p class="security-note">
+                            <i class="fas fa-shield-alt"></i>
+                            Powered by Razorpay - Secure & PCI DSS Compliant
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges-container">
+                <div class="trust-badge">
+                    <i class="fas fa-lock"></i>
+                    <span>SSL Encrypted</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Payment</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-undo"></i>
+                    <span>30-Day Guarantee</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-headset"></i>
+                    <span>24/7 Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="IMG_3663-removebg-preview.png" alt="Muscle Mentors Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Muscle Mentors</span>
+                    </div>
+                    <p class="footer-description">Transform your body with expert training and personalized fitness education.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="training-fees.html">Training & Fees</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="courses.html">Foundation Fitness</a></li>
+                        <li><a href="courses.html">Muscle Building</a></li>
+                        <li><a href="courses.html">Weight Loss</a></li>
+                        <li><a href="courses.html">Elite Performance</a></li>
+                        <li><a href="courses.html">Nutrition Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> musclementorsfitnessacademy@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +91-9840531177 / +91-8778631410</p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Muscle Mentors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

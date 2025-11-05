@@ -1,0 +1,163 @@
+═══════════════════════════════════════════════════════════════
+   🎯 SIMPLE FIX FOR CPANEL HOSTING - Razorpay 400 Error
+═══════════════════════════════════════════════════════════════
+
+YOUR PROBLEM:
+❌ 400 Bad Request error when trying to pay
+❌ Works locally but not on your cPanel website
+
+THE REASON:
+Your website is looking for backend at "localhost:3001"
+But localhost doesn't exist on the internet!
+
+═══════════════════════════════════════════════════════════════
+
+THE SOLUTION (3 Simple Steps):
+═══════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│  STEP 1: Deploy Backend to Railway (FREE)                   │
+└─────────────────────────────────────────────────────────────┘
+
+1. Go to: https://railway.app/
+2. Click "Start a New Project"
+3. Upload your 'server' folder
+4. Add these environment variables:
+   • RAZORPAY_KEY_ID = rzp_live_Ra9dMWDeDR9sxr
+   • RAZORPAY_KEY_SECRET = z3hbpqpvKC2XyWolIPkSSKJ9
+5. Copy your URL (looks like: https://xyz.up.railway.app)
+
+Test it: https://your-app.railway.app/api/health
+Should show: {"ok":true,"mode":"live"}
+
+═══════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│  STEP 2: Update Configuration                               │
+└─────────────────────────────────────────────────────────────┘
+
+Open: js/config.js
+Find: BACKEND_URL: '',
+Change to: BACKEND_URL: 'https://your-app.up.railway.app',
+
+Open: server/server.js
+Find: allowedOrigins = [
+Add your domain:
+  'https://yourdomain.com',
+  'https://www.yourdomain.com',
+
+Save both files.
+Re-upload server.js to Railway (or push to GitHub if connected).
+
+═══════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────┐
+│  STEP 3: Upload to cPanel                                   │
+└─────────────────────────────────────────────────────────────┘
+
+1. Login to cPanel
+2. Open File Manager
+3. Go to public_html
+4. Upload these files:
+   ✅ index.html
+   ✅ payment.html
+   ✅ courses.html
+   ✅ training-fees.html
+   ✅ css/ folder (whole folder)
+   ✅ js/ folder (whole folder with updated config.js)
+   ✅ All images
+
+DON'T upload:
+   ❌ server/ folder (it's on Railway now)
+   ❌ node_modules/
+
+═══════════════════════════════════════════════════════════════
+
+DONE! Test it:
+═══════════════════════════════════════════════════════════════
+
+1. Visit: https://yourdomain.com/payment.html
+2. Fill the form
+3. Click "Pay with Razorpay"
+4. ✅ Razorpay should open!
+
+═══════════════════════════════════════════════════════════════
+
+HOW IT WORKS NOW:
+═══════════════════════════════════════════════════════════════
+
+   YOUR WEBSITE (cPanel)
+   https://yourdomain.com
+          │
+          │ When user clicks PAY
+          │ Frontend calls:
+          │
+          ↓
+   YOUR BACKEND (Railway)  
+   https://your-app.railway.app/api
+          │
+          │ Creates order
+          │ Verifies payment
+          │
+          ↓
+   RAZORPAY
+   Processes the payment
+
+═══════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════════
+
+Problem: Backend health check fails
+Fix: Check Railway dashboard → Deployments → Logs
+     Make sure environment variables are set
+
+Problem: CORS error in browser
+Fix: Add your domain to allowedOrigins in server/server.js
+     Redeploy to Railway
+
+Problem: Payment still not working
+Fix: Press F12 in browser → Console tab → Check error message
+     Copy error and check guides for solution
+
+═══════════════════════════════════════════════════════════════
+
+FILES TO READ:
+═══════════════════════════════════════════════════════════════
+
+📄 START_HERE_CPANEL.md       ← Detailed step-by-step guide
+📄 CPANEL_DEPLOYMENT_GUIDE.md ← Full documentation
+📄 PAYMENT_ARCHITECTURE.md    ← Visual diagrams
+
+═══════════════════════════════════════════════════════════════
+
+IMPORTANT URLS TO TEST:
+═══════════════════════════════════════════════════════════════
+
+Backend Health:
+https://your-app.railway.app/api/health
+
+Backend Public Key:
+https://your-app.railway.app/api/razorpay/public-key
+
+Your Website:
+https://yourdomain.com
+
+Payment Page:
+https://yourdomain.com/payment.html
+
+═══════════════════════════════════════════════════════════════
+
+COST: $0 (Railway free tier is enough)
+TIME: 15-20 minutes
+DIFFICULTY: Easy (just follow steps)
+
+═══════════════════════════════════════════════════════════════
+
+✅ After completing these 3 steps, your Razorpay payments
+   will work perfectly on your cPanel-hosted website!
+
+🎉 Good luck!
+
+═══════════════════════════════════════════════════════════════
+

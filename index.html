@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscle Mentors - Premium Gym Training Education</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Popup Message Styles -->
+    <style>
+        .popup-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 20px 25px;
+            max-width: 400px;
+            z-index: 10000;
+            transform: translateX(100%);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+            border-left: 5px solid;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .popup-message.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .popup-message.success {
+            border-left-color: #10b981;
+        }
+        
+        .popup-message.error {
+            border-left-color: #ef4444;
+        }
+        
+        .popup-message-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .popup-message-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .popup-message.success .popup-message-icon {
+            color: #10b981;
+        }
+        
+        .popup-message.error .popup-message-icon {
+            color: #ef4444;
+        }
+        
+        .popup-message-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #1f2937;
+            margin: 0;
+        }
+        
+        .popup-message-text {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .popup-message-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #9ca3af;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .popup-message-close:hover {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-message {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+    
+    <!-- Configuration and Third-party Integration Scripts -->
+    <script src="js/config.js"></script>
+    
+    <!-- EmailJS for real-time email sending -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Tawk.to for live chat (configured via config.js) -->
+    <script type="text/javascript"> 
+        // Tawk.to will be loaded dynamically based on config
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof CONFIG !== 'undefined' && CONFIG.TAWKTO.propertyId !== 'YOUR_TAWK_PROPERTY_ID' && CONFIG.TAWKTO.propertyId !== 'YOUR_TAWK_ID') {
+                var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/' + CONFIG.TAWKTO.propertyId + '/default';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+                })();
+            }
+        });
+    </script>
+    
+    <!-- Google Analytics for form tracking (configured via config.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        if (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_ANALYTICS.measurementId !== 'GA_MEASUREMENT_ID') {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', CONFIG.GOOGLE_ANALYTICS.measurementId);
+        }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="IMG_3663-removebg-preview.png" alt="Muscle Mentors Logo" class="logo-img">
+                <span class="logo-text">Muscle Mentors</span>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="courses.html" class="nav-link">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="training-fees.html" class="nav-link">Training & Fees</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item cta-item">
+                    <a href="courses.html" class="nav-link cta-btn">Get Started</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Body with Expert Training</h1>
+                <p class="hero-subtitle" >Professional fitness education and personalized training programs designed to help you achieve your fitness goals.</p>
+                <div class="hero-buttons">
+                    <a href="courses.html" class="btn btn-primary">Explore Courses</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Students Trained</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Expert Trainers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Muscle Mentors?</h2>
+                <p class="section-subtitle">Comprehensive fitness education with proven results</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="feature-title">Expert Training</h3>
+                    <p class="feature-description">Learn from certified professionals with years of experience in fitness and bodybuilding.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="feature-title">Tamil Language support</h3>
+                    <p class="feature-description">South India first Tamil Language Classes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Progress Tracking</h3>
+                    <p class="feature-description">Monitor your progress with detailed analytics and regular assessments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile Access</h3>
+                    <p class="feature-description">Access your training programs anywhere with our mobile-optimized platform.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title">Career Support</h3>
+                    <p class="feature-description">After Courses finished, we provide job and Internship opportunity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="feature-description">Round-the-clock support from our team of fitness experts and nutritionists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Preview -->
+    <section class="programs-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Training Programs</h2>
+                <p class="section-subtitle">Choose from our most effective training programs</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-badge">Master training Certification</div>
+                    </div>
+                    <div class="program-content">
+                        <!-- <h3 class="program-title">Foundation Fitness</h3> -->
+                        <p class="program-description">Diet&Nutrition<br>CPR(Practical)<br>Weigntloss  Management (Level-1)<br><br>Lifestyle Disease & Disorders Management<br>Injury Prevention<br>Stength & Conditioning Practical(Level-2)<br><br>Bodybuilding Contest Preparation<br>Gym Management Sales & Marketing(Level-3)</p>
+                        <div class="program-details">
+                            <span class="program-duration"><i class="fas fa-clock"></i> 6 Months</span>
+                            <span class="program-level"><i class="fas fa-signal"></i> Level-1, Level-2,Level-3</span>
+                        </div>
+                        <div class="program-price">₹50,000</div>
+                    </div>
+                </div>
+                <!-- <div class="program-card featured">
+                    <div class="program-image">
+                        <div class="program-badge">Most Popular</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Muscle Building Mastery</h3>
+                        <p class="program-description">Comprehensive muscle building program with advanced techniques and nutrition guidance.</p>
+                        <div class="program-details">
+                            <span class="program-duration"><i class="fas fa-clock"></i> 12 Weeks</span>
+                            <span class="program-level"><i class="fas fa-signal"></i> Intermediate</span>
+                        </div>
+                        <div class="program-price">₹149/month</div>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <div class="program-badge">Advanced</div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">Elite Performance</h3>
+                        <p class="program-description">Advanced training for serious athletes and experienced lifters seeking peak performance.</p>
+                        <div class="program-details">
+                            <span class="program-duration"><i class="fas fa-clock"></i> 16 Weeks</span>
+                            <span class="program-level"><i class="fas fa-signal"></i> Advanced</span>
+                        </div>
+                        <div class="program-price">₹199/month</div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="programs-cta">
+                <a href="courses.html" class="btn btn-primary">View All Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-header">
+                        <h2 class="section-title">About Muscle Mentors</h2>
+                        <p class="section-subtitle">Your trusted fitness education partner</p>
+                    </div>
+                    <p class="about-description">
+                        With over a decade of experience in the fitness industry, Muscle Mentors has helped thousands of individuals transform their bodies and lives. Our team of certified trainers and nutritionists are dedicated to providing you with the knowledge and support you need to achieve your fitness goals.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certified Professional Trainers</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Science-Based Training Methods</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Proven Track Record of Success</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Comprehensive Support System</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-stats-card">
+                        <h3>Our Impact</h3>
+                        <div class="stats-list">
+                            <div class="stat-item">
+                                <span class="stat-value">10+</span>
+                                <span class="stat-text">Years Experience</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">500+</span>
+                                <span class="stat-text">Success Stories</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">15</span>
+                                <span class="stat-text">Expert Trainers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Students Say</h2>
+                <p class="section-subtitle">Real results from real people</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Muscle Mentors transformed my approach to fitness. The personalized training program helped me gain 15lbs of muscle in just 3 months!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Mike Johnson</h4>
+                                <span class="author-role">Software Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The nutrition guidance and workout plans are incredible. I've never felt stronger or more confident in my fitness journey."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Sarah Williams</h4>
+                                <span class="author-role">Marketing Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Professional trainers, excellent support, and results that speak for themselves. Highly recommend Muscle Mentors!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">David Chen</h4>
+                                <span class="author-role">Business Owner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Achievements</h2>
+                <p class="section-subtitle">Proven excellence in fitness education and training</p>
+            </div>
+            
+            <!-- Achievements Slider -->
+            <div class="achievements-slider">
+                <div class="slider-container">
+                    <!-- Slide 1 -->
+                    <div class="achievement-slide active">
+                        <img src="DSC06034.JPG" alt="Achievement 1" class="slide-image">
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="achievement-slide">
+                        <img src="DSC06083.JPG" alt="Achievement 2" class="slide-image">
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="achievement-slide">
+                        <img src="DSC06107.JPG" alt="Achievement 3" class="slide-image">
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="achievement-slide">
+                        <img src="DSC06124.JPG" alt="Achievement 4" class="slide-image">
+                    </div>
+                    <div class="achievement-slide">
+                        <img src="DSC06016.JPG" alt="Achievement 4" class="slide-image">
+                    </div>
+                    <div class="achievement-slide">
+                        <img src="DSC06029.JPG" alt="Achievement 4" class="slide-image">
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="slider-nav prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-nav next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Dots Navigation -->
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Body?</h2>
+                <p class="cta-subtitle"style="color: white;">Join thousands of satisfied students and start your fitness journey today.</p>
+                <div class="cta-buttons">
+                    <a href="courses.html" class="btn btn-primary btn-large">Browse Courses</a>
+                    <a href="training-fees.html" class="btn btn-secondary btn-large">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "zL--s0K3zFjEPi1kO",
+      });
+   })();
+</script>
+
+     <!-- Certifications Slider Section -->
+     <section class="certifications">
+         <div class="container">
+             <div class="section-header">
+                 <h2 class="section-title">Certifications & Accreditations</h2>
+                 <p class="section-subtitle">Recognized excellence by leading fitness organizations</p>
+             </div>
+             
+             <!-- Certificates Slider -->
+             <div class="cert-slider-wrapper">
+                 <button class="cert-nav cert-prev" onclick="changeCertSlide(-1)">
+                     <i class="fas fa-chevron-left"></i>
+                 </button>
+                 
+                 <div class="cert-slider-container">
+                     <div class="cert-slider-track">
+                         <!-- Certificate 1 -->
+                         <div class="cert-slide">
+                             <img src="level 1.png" alt="Certification 1" class="cert-img">
+                         </div>
+                         
+                         <!-- Certificate 2 -->
+                         <div class="cert-slide">
+                             <img src="level 2.png" alt="Certification 2" class="cert-img">
+                         </div>
+                         
+                         <!-- Certificate 3 -->
+                         <div class="cert-slide">
+                             <img src="level 3.png" alt="Certification 3" class="cert-img">
+                         </div>
+                         
+                         <!-- Certificate 4 -->
+                         <div class="cert-slide">
+                             <img src="Black and Yellow Professional Achievement Certificate _20250828_132523_0000.png" alt="Certification 4" class="cert-img">
+                         </div>
+                     </div>
+                 </div>
+                 
+                 <button class="cert-nav cert-next" onclick="changeCertSlide(1)">
+                     <i class="fas fa-chevron-right"></i>
+                 </button>
+             </div>
+             
+             <!-- Slide Indicators -->
+             <div class="cert-indicators">
+                 <span class="cert-indicator active" onclick="setCertSlide(0)"></span>
+                 <span class="cert-indicator" onclick="setCertSlide(1)"></span>
+                 <span class="cert-indicator" onclick="setCertSlide(2)"></span>
+                 <span class="cert-indicator" onclick="setCertSlide(3)"></span>
+             </div>
+         </div>
+     </section>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Have questions? We're here to help!</p><br>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>musclementorsfitnessacademy@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91-9840531177 / +91-8778631410</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="form" id="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name" class="form-label">Your Name</label>
+                            <input type="text" id="contact-name" name="name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">Email Address</label>
+                            <input type="email" id="contact-email" name="email" class="form-input" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="+1 (555) 123-4567" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-interests" class="form-label">What are you interested in?</label>
+                            <select id="contact-interests" name="interests" class="form-input" required>
+                                <option value="">Select your interest</option>
+                                <option value="Foundation Fitness">Foundation Fitness - Beginner Program</option>
+                                <option value="Muscle Building Mastery">Muscle Building Mastery - Intermediate Program</option>
+                                <option value="Elite Performance">Elite Performance - Advanced Program</option>
+                                <option value="Nutrition Coaching">Nutrition Coaching</option>
+                                <option value="Personal Training">Personal Training</option>
+                                <option value="General Information">General Information</option>
+                                <option value="Pricing Inquiry">Pricing Inquiry</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message" class="form-label">Message (Optional)</label>
+                            <textarea id="contact-message" name="message" class="form-input" rows="4" placeholder="Tell us more about your fitness goals or any questions you have..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-full">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="IMG_3663-removebg-preview.png" alt="Muscle Mentors Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Muscle Mentors</span>
+                    </div>
+                    <p class="footer-description">Transform your body with expert training and personalized fitness education.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="training-fees.html">Training & Fees</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="courses.html">Foundation Fitness</a></li>
+                        <li><a href="courses.html">Muscle Building</a></li>
+                        <li><a href="courses.html">Weight Loss</a></li>
+                        <li><a href="courses.html">Elite Performance</a></li>
+                        <li><a href="courses.html">Nutrition Coaching</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> musclementorsfitnessacademy@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +91-9840531177 / +91-8778631410</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Muscle Mentors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    
+    <!-- Direct EmailJS Form Setup -->
+    <script>
+        // Popup Message Function
+        function showPopupMessage(message, type = 'success') {
+            // Remove any existing popup
+            const existingPopup = document.querySelector('.popup-message');
+            if (existingPopup) {
+                existingPopup.remove();
+            }
+            
+            // Create popup element
+            const popup = document.createElement('div');
+            popup.className = `popup-message ${type}`;
+            
+            // Set icons and titles
+            const icons = {
+                success: '<i class="fas fa-check-circle"></i>',
+                error: '<i class="fas fa-exclamation-circle"></i>'
+            };
+            
+            const titles = {
+                success: 'Success!',
+                error: 'Error!'
+            };
+            
+            popup.innerHTML = `
+                <button class="popup-message-close" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="popup-message-header">
+                    <div class="popup-message-icon">
+                        ${icons[type]}
+                    </div>
+                    <h4 class="popup-message-title">${titles[type]}</h4>
+                </div>
+                <p class="popup-message-text">${message}</p>
+            `;
+            
+            // Add to page
+            document.body.appendChild(popup);
+            
+            // Show popup
+            setTimeout(() => {
+                popup.classList.add('show');
+            }, 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (popup && popup.parentElement) {
+                    popup.classList.remove('show');
+                    setTimeout(() => {
+                        if (popup && popup.parentElement) {
+                            popup.remove();
+                        }
+                    }, 300);
+                }
+            }, 5000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Direct EmailJS setup starting...');
+            
+            // EmailJS Configuration
+            const EMAIL_CONFIG = {
+                serviceID: 'service_e88yz2p',
+                templateID: 'template_hty85vh', // Client confirmation template
+                adminTemplateID: 'template_l4nm8uf', // Replace with actual template ID from EmailJS
+                publicKey: 'zL--s0K3zFjEPi1kO'
+            };
+            
+            // Initialize EmailJS
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init(EMAIL_CONFIG.publicKey);
+                console.log('✅ EmailJS initialized successfully');
+            } else {
+                console.error('❌ EmailJS not loaded');
+                return;
+            }
+            
+            // Get the contact form
+            const contactForm = document.getElementById('contact-form');
+            if (!contactForm) {
+                console.error('❌ Contact form not found');
+                return;
+            }
+            
+            console.log('✅ Contact form found, setting up...');
+            
+            // Handle form submission
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                console.log('📧 Form submitted');
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const interests = formData.get('interests');
+                const message = formData.get('message');
+                
+                console.log('Form data:', { name, email, phone, interests, message });
+                
+                // Validate required fields
+                if (!name || !email || !phone || !interests) {
+                    alert('Please fill in all required fields (Name, Email, Phone, and Interest)');
+                    return;
+                }
+                
+                // Show loading state
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                try {
+                    // Prepare email data
+                    const emailData = {
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        interests: interests,
+                        message: message || 'No additional message provided',
+                        date: new Date().toLocaleString()
+                    };
+                    
+                    console.log('📤 Sending emails...');
+                    console.log('📧 Email data:', emailData);
+                    console.log('🔧 Config:', EMAIL_CONFIG);
+                    
+                    let clientResponse = null;
+                    let adminResponse = null;
+                    
+                    // Send client confirmation email
+                    try {
+                        console.log('📤 Sending client email...');
+                        clientResponse = await emailjs.send(
+                            EMAIL_CONFIG.serviceID,
+                            EMAIL_CONFIG.templateID,
+                            emailData
+                        );
+                        console.log('✅ Client email sent successfully:', clientResponse);
+                    } catch (clientError) {
+                        console.error('❌ Client email failed:', clientError);
+                        throw new Error(`Client email failed: ${clientError.text || clientError.message}`);
+                    }
+                    
+                    // Send admin notification email
+                    try {
+                        console.log('📤 Sending admin email...');
+                        adminResponse = await emailjs.send(
+                            EMAIL_CONFIG.serviceID,
+                            EMAIL_CONFIG.adminTemplateID,
+                            emailData
+                        );
+                        console.log('✅ Admin email sent successfully:', adminResponse);
+                    } catch (adminError) {
+                        console.error('❌ Admin email failed:', adminError);
+                        throw new Error(`Admin email failed: ${adminError.text || adminError.message}`);
+                    }
+                    
+                    console.log('✅ Both emails sent successfully!');
+                    showPopupMessage('Message sent successfully! We\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                    
+                } catch (error) {
+                    console.error('❌ Email sending failed:', error);
+                    console.error('❌ Full error details:', error);
+                    showPopupMessage(`Failed to send message: ${error.message}. Please try again.`, 'error');
+                } finally {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+            
+            console.log('✅ Direct EmailJS form setup complete');
+            
+            // Debug function - you can call this in browser console to test admin email
+            window.testAdminEmail = async function() {
+                console.log('🧪 Testing admin email...');
+                try {
+                    const testData = {
+                        name: 'Test User',
+                        email: 'test@example.com',
+                        phone: '+1 (555) 123-4567',
+                        interests: 'Foundation Fitness',
+                        message: 'This is a test message',
+                        date: new Date().toLocaleString()
+                    };
+                    
+                    const response = await emailjs.send(
+                        EMAIL_CONFIG.serviceID,
+                        EMAIL_CONFIG.adminTemplateID,
+                        testData
+                    );
+                    
+                    console.log('✅ Admin email test successful:', response);
+                    showPopupMessage('Admin email test sent successfully!', 'success');
+                } catch (error) {
+                    console.error('❌ Admin email test failed:', error);
+                    showPopupMessage(`Admin email test failed: ${error.text || error.message}`, 'error');
+                }
+            };
+            
+            console.log('🧪 To test admin email, run: testAdminEmail() in browser console');
+        });
+    </script>
+    
+    <!-- Achievements Slider Script -->
+    <script>
+        let slideIndex = 1;
+        let autoSlideInterval;
+        
+        // Initialize slider on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(slideIndex);
+            startAutoSlide();
+            
+            // Pause auto-slide on hover
+            const slider = document.querySelector('.achievements-slider');
+            if (slider) {
+                slider.addEventListener('mouseenter', stopAutoSlide);
+                slider.addEventListener('mouseleave', startAutoSlide);
+            }
+        });
+        
+        // Next/previous controls
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+            resetAutoSlide();
+        }
+        
+        // Dot controls
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+            resetAutoSlide();
+        }
+        
+        // Show specific slide
+        function showSlide(n) {
+            let slides = document.getElementsByClassName('achievement-slide');
+            let dots = document.getElementsByClassName('dot');
+            
+            if (!slides.length || !dots.length) return;
+            
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            // Remove active class from all dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            // Show current slide and activate dot
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+        }
+        
+        // Auto-advance slides
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(function() {
+                slideIndex++;
+                showSlide(slideIndex);
+            }, 5000); // Change slide every 5 seconds
+        }
+        
+        // Stop auto-advance
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+        
+        // Reset auto-advance timer
+        function resetAutoSlide() {
+            stopAutoSlide();
+            startAutoSlide();
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+        
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const sliderContainer = document.querySelector('.slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('touchstart', function(event) {
+                touchStartX = event.changedTouches[0].screenX;
+            });
+            
+            sliderContainer.addEventListener('touchend', function(event) {
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            });
+        }
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left
+                changeSlide(1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right
+                changeSlide(-1);
+            }
+        }
+    </script>
+    
+    <!-- Certificate Slider Script -->
+    <script>
+        let currentCertSlide = 0;
+        
+        function changeCertSlide(direction) {
+            const slides = document.querySelectorAll('.cert-slide');
+            const indicators = document.querySelectorAll('.cert-indicator');
+            const track = document.querySelector('.cert-slider-track');
+            
+            if (!slides.length) return;
+            
+            currentCertSlide += direction;
+            
+            // Loop around
+            if (currentCertSlide >= slides.length) {
+                currentCertSlide = 0;
+            }
+            if (currentCertSlide < 0) {
+                currentCertSlide = slides.length - 1;
+            }
+            
+            // Move the slider
+            const offset = -currentCertSlide * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentCertSlide);
+            });
+        }
+        
+        function setCertSlide(index) {
+            const slides = document.querySelectorAll('.cert-slide');
+            const indicators = document.querySelectorAll('.cert-indicator');
+            const track = document.querySelector('.cert-slider-track');
+            
+            if (!slides.length) return;
+            
+            currentCertSlide = index;
+            
+            // Move the slider
+            const offset = -currentCertSlide * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentCertSlide);
+            });
+        }
+        
+        // Touch/swipe support for certificate slider
+        let certTouchStartX = 0;
+        let certTouchEndX = 0;
+        
+        const certSliderContainer = document.querySelector('.cert-slider-container');
+        if (certSliderContainer) {
+            certSliderContainer.addEventListener('touchstart', function(event) {
+                certTouchStartX = event.changedTouches[0].screenX;
+            });
+            
+            certSliderContainer.addEventListener('touchend', function(event) {
+                certTouchEndX = event.changedTouches[0].screenX;
+                handleCertSwipe();
+            });
+        }
+        
+        function handleCertSwipe() {
+            if (certTouchEndX < certTouchStartX - 50) {
+                // Swipe left
+                changeCertSlide(1);
+            }
+            if (certTouchEndX > certTouchStartX + 50) {
+                // Swipe right
+                changeCertSlide(-1);
+            }
+        }
+    </script>
+</body>
+</html>
