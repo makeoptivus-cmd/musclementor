@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollEffects();
     initEmailEnhancements();
     initCourseCheckout();
+    initLevelNavigation();
+    initCourseExpand();
     
     // Initialize simple contact form
     if (document.getElementById('contact-form')) {
@@ -260,17 +262,7 @@ function initFAQAccordion() {
  * PAYMENT FORM FUNCTIONALITY
  */
 function initPaymentForm() {
-    // Handle billing cycle changes
-    const billingOptions = document.querySelectorAll('input[name="billing"]');
-    billingOptions.forEach(option => {
-        option.addEventListener('change', updatePaymentSummary);
-    });
-    
-    // Handle add-on changes
-    const addonOptions = document.querySelectorAll('input[name="addons"]');
-    addonOptions.forEach(option => {
-        option.addEventListener('change', updatePaymentSummary);
-    });
+    // Course-based payment - no billing cycle or addons needed
     
     // Handle payment method changes
     const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
@@ -340,45 +332,42 @@ function updatePaymentInfo(method) {
  * UPDATE PAYMENT SUMMARY
  */
 function updatePaymentSummary() {
-    const selectedBilling = document.querySelector('input[name="billing"]:checked');
-    const selectedAddons = document.querySelectorAll('input[name="addons"]:checked');
-    
-    if (!selectedBilling) return;
-    
     const urlParams = new URLSearchParams(window.location.search);
-    const overrideAmountParam = urlParams.get('amount');
-    const overrideAmount = overrideAmountParam ? parseFloat(overrideAmountParam) : null;
-    let basePrice = overrideAmount != null ? overrideAmount : (selectedBilling.value === 'monthly' ? 149 : 119);
-    let addonsTotal = 0;
+    const amountParam = urlParams.get('amount');
+    const courseParam = urlParams.get('course');
+    const labelParam = urlParams.get('label');
     
-    // Calculate add-ons
-    selectedAddons.forEach(addon => {
-        switch(addon.value) {
-            case 'nutrition':
-                addonsTotal += 79;
-                break;
-            case 'analysis':
-                addonsTotal += 49;
-                break;
-            case 'recovery':
-                addonsTotal += 39;
-                break;
-        }
-    });
+    // Get course fee from URL parameter (in rupees)
+    const courseFee = amountParam ? parseFloat(amountParam) : 0;
     
-    const subtotal = basePrice + addonsTotal;
-    const tax = subtotal * 0.08; // 8% tax
-    const total = subtotal + tax;
+    // Check if discount is applied
+    const discountEl = document.getElementById('discount');
+    let discountAmount = 0;
+    if (discountEl && discountEl.textContent && discountEl.parentElement.style.display !== 'none') {
+        const discountText = discountEl.textContent.replace(/[₹$-,]/g, '').trim();
+        discountAmount = parseFloat(discountText) || 0;
+    }
+    
+    // Total is course fee minus discount (no tax)
+    const total = Math.max(0, courseFee - discountAmount);
     
     // Update display
-    const subtotalEl = document.getElementById('subtotal');
-    const taxEl = document.getElementById('tax');
+    const courseFeeEl = document.getElementById('course-fee');
     const totalEl = document.getElementById('total');
     
     const symbol = (typeof CONFIG !== 'undefined' && CONFIG.RAZORPAY && CONFIG.RAZORPAY.currency === 'INR') ? '₹' : '$';
-    if (subtotalEl) subtotalEl.textContent = `${symbol}${subtotal.toFixed(2)}`;
-    if (taxEl) taxEl.textContent = `${symbol}${tax.toFixed(2)}`;
-    if (totalEl) totalEl.textContent = `${symbol}${total.toFixed(2)}`;
+    
+    if (courseFeeEl) {
+        courseFeeEl.textContent = `${symbol}${courseFee.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+    if (totalEl) {
+        totalEl.textContent = `${symbol}${total.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+    
+    // Update course information if available
+    if (labelParam) {
+        updateSelectedCourse(labelParam, courseParam);
+    }
 }
 
 /**
@@ -545,12 +534,12 @@ function initPromoCode() {
         
         if (validCodes[promoCode]) {
             const discount = validCodes[promoCode];
-            const subtotalEl = document.getElementById('subtotal');
+            const courseFeeEl = document.getElementById('course-fee');
             const discountEl = document.getElementById('discount');
             
-            if (subtotalEl && discountEl) {
-                const subtotal = parseFloat(subtotalEl.textContent.replace('₹', '').replace('$', ''));
-                const discountAmount = subtotal * discount;
+            if (courseFeeEl && discountEl) {
+                const courseFee = parseFloat(courseFeeEl.textContent.replace('₹', '').replace('$', '').replace(/,/g, ''));
+                const discountAmount = courseFee * discount;
                 
                 const symbol = (typeof CONFIG !== 'undefined' && CONFIG.RAZORPAY && CONFIG.RAZORPAY.currency === 'INR') ? '₹' : '$';
                 discountEl.textContent = `-${symbol}${discountAmount.toFixed(2)}`;
@@ -635,6 +624,15 @@ function processRazorpayPayment() {
     // Calculate total amount (convert to paise for Razorpay)
     const totalAmount = calculateTotalAmount();
     const amountInPaise = Math.round(totalAmount * 100);
+    
+    // Debug logging
+    console.log('Payment Details:', {
+        totalAmount: totalAmount,
+        amountInPaise: amountInPaise,
+        currency: CONFIG.RAZORPAY.currency,
+        orderEndpoint: CONFIG.RAZORPAY.orderEndpoint
+    });
+    
     if (!amountInPaise || amountInPaise < 100) {
         showNotification('Amount must be at least ₹1.00', 'error');
         return;
@@ -703,15 +701,85 @@ function processRazorpayPayment() {
     };
 
     if (CONFIG.RAZORPAY.orderEndpoint) {
-        fetch(CONFIG.RAZORPAY.orderEndpoint, {
+        // Create order on server (required for live keys)
+        const endpoint = CONFIG.RAZORPAY.orderEndpoint;
+        console.log('Creating order on server:', endpoint);
+        console.log('Request details:', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ amount: amountInPaise, currency: CONFIG.RAZORPAY.currency, notes: { plan: getSelectedPlan() } })
+            url: endpoint,
+            amount: amountInPaise,
+            currency: CONFIG.RAZORPAY.currency
+        });
+        
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ 
+                amount: amountInPaise, 
+                currency: CONFIG.RAZORPAY.currency, 
+                notes: { 
+                    plan: getSelectedPlan(),
+                    billing: getSelectedBilling(),
+                    addons: getSelectedAddons().join(',')
+                } 
+            })
         })
-        .then(r => r.json())
-        .then(data => openCheckout(data && (data.id || data.order_id)))
-        .catch(() => openCheckout());
+        .then(async (response) => {
+            console.log('Response status:', response.status, response.statusText);
+            if (!response.ok) {
+                const errorText = await response.text();
+                let errorMessage = `Server error: ${response.status}`;
+                
+                // Provide specific error messages
+                if (response.status === 405) {
+                    errorMessage = `Method Not Allowed (405). The endpoint ${endpoint} doesn't accept POST requests. Check if the backend server is running and the route is configured correctly.`;
+                } else if (response.status === 404) {
+                    errorMessage = `Endpoint not found (404). The URL ${endpoint} doesn't exist. Check CONFIG.RAZORPAY.orderEndpoint in js/config.js`;
+                } else if (response.status === 500) {
+                    errorMessage = `Server error (500). Backend server encountered an error. Check backend logs.`;
+                } else if (errorText) {
+                    try {
+                        const errorJson = JSON.parse(errorText);
+                        errorMessage = errorJson.message || errorJson.error || errorMessage;
+                    } catch {
+                        errorMessage = errorText || errorMessage;
+                    }
+                }
+                
+                console.error('Order creation failed:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    url: endpoint,
+                    error: errorText
+                });
+                throw new Error(errorMessage);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Order created successfully:', data);
+            const orderId = data && (data.id || data.order_id);
+            if (!orderId) {
+                console.error('No order_id in response:', data);
+                showNotification('Failed to create payment order. Please try again.', 'error');
+                return;
+            }
+            openCheckout(orderId);
+        })
+        .catch((error) => {
+            console.error('Order creation error:', error);
+            showNotification(`Payment setup failed: ${error.message}. Please check your backend connection.`, 'error');
+        });
     } else {
+        // Fallback: Only works with test keys
+        if (CONFIG.RAZORPAY.keyId && CONFIG.RAZORPAY.keyId.startsWith('rzp_live_')) {
+            showNotification('Server order endpoint required for live payments. Please configure CONFIG.RAZORPAY.orderEndpoint.', 'error');
+            return;
+        }
+        console.warn('No orderEndpoint configured. Using local order_id (test mode only)');
         openCheckout();
     }
 }
@@ -744,7 +812,8 @@ function getPaymentFormData() {
 function calculateTotalAmount() {
     const totalElement = document.getElementById('total');
     if (totalElement) {
-        const totalText = totalElement.textContent.replace('₹', '').replace('$', '');
+        // Remove currency symbol and commas, then parse
+        const totalText = totalElement.textContent.replace(/[₹$,]/g, '').trim();
         return parseFloat(totalText) || 0;
     }
     return 0;
@@ -758,27 +827,27 @@ function generateOrderId() {
 }
 
 /**
- * GET SELECTED PLAN
+ * GET SELECTED COURSE
  */
 function getSelectedPlan() {
-    const planName = document.querySelector('.plan-name');
-    return planName ? planName.textContent : 'Pro Plan';
+    const urlParams = new URLSearchParams(window.location.search);
+    const course = urlParams.get('course');
+    const label = urlParams.get('label');
+    return label || course || 'Course Enrollment';
 }
 
 /**
- * GET SELECTED BILLING
+ * GET SELECTED BILLING (Not used for course-based payments)
  */
 function getSelectedBilling() {
-    const selectedBilling = document.querySelector('input[name="billing"]:checked');
-    return selectedBilling ? selectedBilling.value : 'monthly';
+    return 'one-time';
 }
 
 /**
- * GET SELECTED ADDONS
+ * GET SELECTED ADDONS (Not used for course-based payments)
  */
 function getSelectedAddons() {
-    const selectedAddons = document.querySelectorAll('input[name="addons"]:checked');
-    return Array.from(selectedAddons).map(addon => addon.value);
+    return [];
 }
 
 /**
@@ -1017,14 +1086,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Handle URL parameters for plan selection
+// Handle URL parameters for course selection
 window.addEventListener('load', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const plan = urlParams.get('plan');
+    const course = urlParams.get('course');
     const amount = urlParams.get('amount');
+    const label = urlParams.get('label');
     
     // Redirect to courses if on payment page without course selection
-    if (window.location.pathname.includes('payment.html') && !plan && !amount) {
+    if (window.location.pathname.includes('payment.html') && !course && !amount) {
         showNotification('Please select a course first', 'info');
         setTimeout(() => {
             window.location.href = 'courses.html';
@@ -1032,62 +1102,255 @@ window.addEventListener('load', function() {
         return;
     }
     
-    const addon = urlParams.get('addon');
-    
-    if (plan) {
-        // Update selected plan based on URL parameter
-        updateSelectedPlan(plan);
+    if (course || label) {
+        // Update selected course based on URL parameter
+        updateSelectedCourse(label, course);
     }
     
-    if (addon) {
-        // Select addon based on URL parameter
-        const addonCheckbox = document.querySelector(`input[name="addons"][value="${addon}"]`);
-        if (addonCheckbox) {
-            addonCheckbox.checked = true;
-            updatePaymentSummary();
-        }
-    }
+    // Always update payment summary on page load
+    updatePaymentSummary();
 });
 
 /**
- * UPDATE SELECTED PLAN
+ * UPDATE SELECTED COURSE
  */
-function updateSelectedPlan(planType) {
-    const planNames = {
-        'starter': 'Starter Plan',
-        'pro': 'Pro Plan',
-        'elite': 'Elite Plan'
+function updateSelectedCourse(courseName, courseId) {
+    const courseNameEl = document.getElementById('course-name');
+    const courseLevelEl = document.getElementById('course-level');
+    const courseDescEl = document.getElementById('course-description');
+    const courseFeaturesEl = document.getElementById('course-features');
+    
+    // Course information mapping
+    const courseInfo = {
+        'cpr-practical': {
+            level: 'Level 1',
+            description: 'Comprehensive Cardiopulmonary Resuscitation Training with hands-on practice for adults, children, and infants.',
+            features: [
+                '20 Comprehensive Topics',
+                'Hands-on Practical Training',
+                'AED Usage Training',
+                'Certification Included'
+            ]
+        },
+        'diet-nutrition': {
+            level: 'Level 1',
+            description: 'Complete Nutrition Science covering macros, micros, meal planning, sports nutrition, and therapeutic diets.',
+            features: [
+                '30 Comprehensive Topics',
+                'Macro & Micro Nutrients',
+                'Meal Planning & TDEE',
+                'Sports Nutrition'
+            ]
+        },
+        'weight-loss-management': {
+            level: 'Level 1',
+            description: 'Science-based fat loss strategies covering BMI, BMR, metabolism, nutrition, and lifestyle modifications.',
+            features: [
+                '40 Comprehensive Topics',
+                'Fat Loss Science',
+                'Health Conditions Management',
+                'Lifestyle Modification'
+            ]
+        },
+        'disease-disorder-management': {
+            level: 'Level 2',
+            description: 'Special Population Fitness Workshop covering seniors, disabilities, chronic conditions, and inclusive programming.',
+            features: [
+                '30 Comprehensive Topics',
+                'Special Population Training',
+                'Inclusive Programming',
+                'Case Studies Included'
+            ]
+        },
+        'strength-training-fundamentals': {
+            level: 'Level 2',
+            description: 'Master strength training with proper form, progressive overload, periodization, and Olympic lifting basics.',
+            features: [
+                '30 Comprehensive Topics',
+                'Practical Training',
+                'Olympic Lifting Basics',
+                'Periodization Training'
+            ]
+        },
+        'injury-prevention': {
+            level: 'Level 2',
+            description: 'Comprehensive injury prevention strategies covering warm-ups, proper techniques, recovery, and sport-specific protocols.',
+            features: [
+                '30 Comprehensive Topics',
+                'Sport-Specific Training',
+                'Recovery Protocols',
+                'Risk Assessment'
+            ]
+        },
+        'bodybuilding-contest-preparation': {
+            level: 'Level 3',
+            description: 'Complete guide to competition success covering coaching, peak week, posing, PCT, and career building in bodybuilding.',
+            features: [
+                '50 Comprehensive Topics',
+                'Peak Week Strategies',
+                'Posing & Stage Presence',
+                'Career & Business Guide'
+            ]
+        },
+        'gym-management': {
+            level: 'Business',
+            description: 'Complete business training covering gym setup, management, sales strategies, and marketing for gym success.',
+            features: [
+                '30 Comprehensive Topics',
+                'Gym Setup & Design',
+                'Sales & Conversion',
+                'Marketing Strategies'
+            ]
+        }
     };
     
-    const urlParams = new URLSearchParams(window.location.search);
-    const amountParam = urlParams.get('amount');
-    const labelParam = urlParams.get('label');
-    const planPrices = !amountParam ? {
-        'starter': { monthly: 99, annual: 79 },
-        'pro': { monthly: 149, annual: 119 },
-        'elite': { monthly: 249, annual: 199 }
-    } : null;
+    if (courseNameEl) {
+        courseNameEl.textContent = courseName || 'Select a Course';
+    }
     
-    const planName = document.querySelector('.plan-name');
-    const monthlyPrice = document.querySelector('.monthly-price');
-    const annualPrice = document.querySelector('.annual-price');
-    
-    if (planName) {
-        if (labelParam) {
-            planName.textContent = labelParam;
-        } else if (planNames[planType]) {
-            planName.textContent = planNames[planType];
+    if (courseId && courseInfo[courseId]) {
+        const info = courseInfo[courseId];
+        
+        if (courseLevelEl) {
+            courseLevelEl.textContent = info.level;
+            courseLevelEl.style.display = 'inline-block';
+        }
+        
+        if (courseDescEl) {
+            courseDescEl.textContent = info.description;
+        }
+        
+        if (courseFeaturesEl) {
+            courseFeaturesEl.innerHTML = info.features.map(feature => 
+                `<li><i class="fas fa-check"></i> ${feature}</li>`
+            ).join('');
+        }
+    } else {
+        if (courseLevelEl) {
+            courseLevelEl.style.display = 'none';
         }
     }
+}
+
+/**
+ * LEVEL NAVIGATION
+ * Filter courses by level
+ */
+function initLevelNavigation() {
+    const levelTabs = document.querySelectorAll('.level-tab');
+    const levelSections = document.querySelectorAll('.level-section');
     
-    if (amountParam) {
-        if (monthlyPrice) monthlyPrice.textContent = parseFloat(amountParam);
-        if (annualPrice) annualPrice.textContent = parseFloat(amountParam);
-    } else if (planPrices && planPrices[planType]) {
-        if (monthlyPrice) monthlyPrice.textContent = planPrices[planType].monthly;
-        if (annualPrice) annualPrice.textContent = planPrices[planType].annual;
-    }
+    if (levelTabs.length === 0) return;
     
-    // Update payment summary
-    setTimeout(updatePaymentSummary, 100);
+    // Initialize: Show all sections by default
+    levelSections.forEach(section => {
+        section.classList.add('active');
+        section.style.display = 'block';
+    });
+    
+    levelTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const level = this.getAttribute('data-level');
+            
+            // Update active tab
+            levelTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show/hide level sections
+            levelSections.forEach(section => {
+                const sectionLevel = section.getAttribute('data-level');
+                
+                if (level === 'all') {
+                    section.classList.add('active');
+                    section.style.display = 'block';
+                } else if (sectionLevel === level) {
+                    section.classList.add('active');
+                    section.style.display = 'block';
+                } else {
+                    section.classList.remove('active');
+                    section.style.display = 'none';
+                }
+            });
+            
+            // Scroll to top of courses section
+            const coursesSection = document.querySelector('.courses-section');
+            if (coursesSection) {
+                const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 70;
+                const targetPosition = coursesSection.offsetTop - navbarHeight - 20;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/**
+ * COURSE EXPAND/COLLAPSE
+ * Toggle course details visibility
+ */
+function initCourseExpand() {
+    const expandButtons = document.querySelectorAll('.expand-btn');
+    
+    expandButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            const courseId = this.getAttribute('data-course');
+            const details = document.getElementById(`${courseId}-details`);
+            const header = this.closest('.course-header-expandable');
+            
+            if (!details) return;
+            
+            // Toggle active class
+            const isActive = details.classList.contains('active');
+            
+            if (isActive) {
+                details.classList.remove('active');
+                this.classList.remove('active');
+                header.classList.remove('active');
+            } else {
+                // Close all other open courses
+                document.querySelectorAll('.course-details.active').forEach(openDetails => {
+                    if (openDetails !== details) {
+                        openDetails.classList.remove('active');
+                        const openButton = openDetails.previousElementSibling?.querySelector('.expand-btn');
+                        const openHeader = openDetails.previousElementSibling;
+                        if (openButton) openButton.classList.remove('active');
+                        if (openHeader) openHeader.classList.remove('active');
+                    }
+                });
+                
+                // Open current course
+                details.classList.add('active');
+                this.classList.add('active');
+                header.classList.add('active');
+                
+                // Scroll to course details
+                setTimeout(() => {
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 70;
+                    const targetPosition = details.offsetTop - navbarHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+        });
+    });
+    
+    // Also allow clicking on header to expand
+    const courseHeaders = document.querySelectorAll('.course-header-expandable');
+    courseHeaders.forEach(header => {
+        header.addEventListener('click', function(e) {
+            // Don't trigger if clicking the expand button
+            if (e.target.closest('.expand-btn')) return;
+            
+            const expandBtn = this.querySelector('.expand-btn');
+            if (expandBtn) {
+                expandBtn.click();
+            }
+        });
+    });
 }

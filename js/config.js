@@ -79,20 +79,38 @@ const CONFIG = {
         // Then update BACKEND_URL below with your deployment URL
         
         // Set your backend URL here:
-        BACKEND_URL: '', // Example: 'https://your-app.up.railway.app'
+        // Empty string ('') = Use same domain (for cPanel same-server setup)
+        // Or set to your backend URL: 'https://your-app.up.railway.app'
+        BACKEND_URL: '', // Empty = auto-detect (localhost:3001 locally, same domain in production)
         
         // Automatic endpoint detection
         get orderEndpoint() {
-            const backendUrl = this.BACKEND_URL || (window.location.hostname === 'localhost' 
-                ? 'http://localhost:3001' 
-                : window.location.origin);
-            return backendUrl + '/api/razorpay/create-order';
+            if (this.BACKEND_URL) {
+                return this.BACKEND_URL + '/api/razorpay/create-order';
+            }
+            // For local development, use backend server
+            const isLocal = window.location.hostname === 'localhost' || 
+                          window.location.hostname === '127.0.0.1' ||
+                          window.location.hostname === '';
+            if (isLocal) {
+                return 'http://localhost:3001/api/razorpay/create-order';
+            }
+            // For production, use same domain
+            return window.location.origin + '/api/razorpay/create-order';
         },
         get verifyEndpoint() {
-            const backendUrl = this.BACKEND_URL || (window.location.hostname === 'localhost'
-                ? 'http://localhost:3001'
-                : window.location.origin);
-            return backendUrl + '/api/razorpay/verify-payment';
+            if (this.BACKEND_URL) {
+                return this.BACKEND_URL + '/api/razorpay/verify-payment';
+            }
+            // For local development, use backend server
+            const isLocal = window.location.hostname === 'localhost' || 
+                          window.location.hostname === '127.0.0.1' ||
+                          window.location.hostname === '';
+            if (isLocal) {
+                return 'http://localhost:3001/api/razorpay/verify-payment';
+            }
+            // For production, use same domain
+            return window.location.origin + '/api/razorpay/verify-payment';
         }
     }
 };

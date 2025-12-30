@@ -1,0 +1,228 @@
+═══════════════════════════════════════════════════════════════
+   🎯 SAME cPanel SERVER - Frontend + Backend Together
+═══════════════════════════════════════════════════════════════
+
+GOAL: Run BOTH website AND Node.js backend on same cPanel
+
+REQUIREMENT: Your cPanel must have "Setup Node.js App" option
+(If you don't see it, contact your hosting provider)
+
+═══════════════════════════════════════════════════════════════
+
+STEP 1: Update Configuration (2 minutes)
+═══════════════════════════════════════════════════════════════
+
+Open: js/config.js
+Find: BACKEND_URL: '',
+Make sure it's EMPTY: BACKEND_URL: '',
+
+✅ Empty means: Use same domain as your website
+   Local: Uses localhost:3001
+   Production: Uses yourdomain.com
+
+═══════════════════════════════════════════════════════════════
+
+STEP 2: Upload Files to cPanel (5 minutes)
+═══════════════════════════════════════════════════════════════
+
+Login to cPanel → File Manager
+
+A. Upload Frontend to: public_html/
+   ✅ index.html
+   ✅ payment.html
+   ✅ courses.html
+   ✅ training-fees.html
+   ✅ css/ folder
+   ✅ js/ folder (with updated config.js)
+   ✅ All images
+
+B. Create folder: backend
+   (At: /home/yourusername/backend)
+   
+   Upload to backend/:
+   ✅ server.js (from your 'server' folder)
+   ✅ package.json (from your 'server' folder)
+
+═══════════════════════════════════════════════════════════════
+
+STEP 3: Setup Node.js App in cPanel (5 minutes)
+═══════════════════════════════════════════════════════════════
+
+1. Find in cPanel: "Setup Node.js App" or "Node.js Selector"
+
+2. Click: "Create Application"
+
+3. Fill in:
+   ┌────────────────────────────────────────────────────┐
+   │ Node.js Version:      16.x (or latest)            │
+   │ Application Mode:     Production                   │
+   │ Application Root:     backend                      │
+   │ Application URL:      api                          │
+   │ Startup File:         server.js                    │
+   └────────────────────────────────────────────────────┘
+
+4. Click: "Create"
+
+═══════════════════════════════════════════════════════════════
+
+STEP 4: Add Environment Variables (2 minutes)
+═══════════════════════════════════════════════════════════════
+
+In Node.js App settings, add these variables:
+
+┌────────────────────────────────────────────────────────────┐
+│ Variable Name          │ Value                             │
+├────────────────────────┼───────────────────────────────────┤
+│ RAZORPAY_KEY_ID        │ rzp_live_Ra9dMWDeDR9sxr           │
+│ RAZORPAY_KEY_SECRET    │ z3hbpqpvKC2XyWolIPkSSKJ9          │
+└────────────────────────┴───────────────────────────────────┘
+
+Click: "Save"
+
+═══════════════════════════════════════════════════════════════
+
+STEP 5: Install Dependencies & Start (3 minutes)
+═══════════════════════════════════════════════════════════════
+
+In Node.js App interface:
+
+1. Click: "Run NPM Install"
+   (Wait for it to complete)
+
+2. Click: "Start" or "Run"
+   (Status should show: "Running")
+
+═══════════════════════════════════════════════════════════════
+
+STEP 6: Test Everything
+═══════════════════════════════════════════════════════════════
+
+Test 1: Backend Health
+Visit: https://yourdomain.com/api/health
+Should see: {"ok":true,"mode":"live"}
+
+Test 2: Website
+Visit: https://yourdomain.com
+Should load normally
+
+Test 3: Payment
+Visit: https://yourdomain.com/payment.html
+Fill form → Click "Pay with Razorpay"
+✅ Razorpay popup should open!
+
+═══════════════════════════════════════════════════════════════
+
+HOW IT WORKS:
+═══════════════════════════════════════════════════════════════
+
+   YOUR cPanel SERVER (yourdomain.com)
+   │
+   ├─→ public_html/          (Frontend - Website files)
+   │   ├─ HTML, CSS, JS
+   │   └─ Images
+   │
+   └─→ backend/              (Backend - Node.js app)
+       ├─ server.js
+       └─ Runs on /api route
+
+SAME SERVER = NO CORS ISSUES! 🎉
+
+═══════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+═══════════════════════════════════════════════════════════════
+
+Problem: Don't see "Setup Node.js App" in cPanel
+Solution: Contact your hosting provider
+          Ask them to enable Node.js support
+          OR use split deployment (see START_HERE_CPANEL.md)
+
+Problem: /api/health returns 404
+Solution: - Check Node.js app status (should be "Running")
+          - Verify Application URL is set to "api"
+          - Click "Restart" in Node.js App
+
+Problem: Node.js app won't start
+Solution: - Check error logs in cPanel Node.js interface
+          - Make sure server.js and package.json uploaded
+          - Run NPM Install again
+          - Check environment variables are saved
+
+Problem: Payment still not working
+Solution: - Press F12 in browser → Check Console for errors
+          - Verify BACKEND_URL: '' in config.js
+          - Test /api/health endpoint
+          - Check Razorpay keys are correct
+
+═══════════════════════════════════════════════════════════════
+
+FILE STRUCTURE ON CPANEL:
+═══════════════════════════════════════════════════════════════
+
+/home/yourusername/
+│
+├── public_html/                    ← Your website
+│   ├── index.html
+│   ├── payment.html
+│   ├── courses.html
+│   ├── css/
+│   │   ├── styles.css
+│   │   └── payment.css
+│   ├── js/
+│   │   ├── config.js (BACKEND_URL: '')
+│   │   └── main.js
+│   └── [images]
+│
+└── backend/                        ← Your Node.js backend
+    ├── server.js
+    ├── package.json
+    └── node_modules/ (created by NPM install)
+
+═══════════════════════════════════════════════════════════════
+
+ADVANTAGES:
+═══════════════════════════════════════════════════════════════
+
+✅ Everything on ONE server
+✅ No separate backend deployment needed
+✅ No CORS issues
+✅ Same domain for everything
+✅ Easier to manage
+✅ Better performance (no external API calls)
+
+═══════════════════════════════════════════════════════════════
+
+WHAT IF CPANEL DOESN'T HAVE NODE.JS?
+═══════════════════════════════════════════════════════════════
+
+Option 1: Ask hosting provider to enable it
+Option 2: Upgrade to plan with Node.js support
+Option 3: Use split deployment:
+          - Frontend on cPanel
+          - Backend on Railway.app (free)
+          - Follow: START_HERE_CPANEL.md
+
+═══════════════════════════════════════════════════════════════
+
+NEED MORE HELP?
+═══════════════════════════════════════════════════════════════
+
+📄 Detailed Guide: CPANEL_SAME_SERVER.md
+📄 Split Deployment: START_HERE_CPANEL.md
+📄 Architecture: PAYMENT_ARCHITECTURE.md
+
+═══════════════════════════════════════════════════════════════
+
+TOTAL TIME: ~15-20 minutes
+COST: $0 (uses existing cPanel)
+DIFFICULTY: Easy
+
+═══════════════════════════════════════════════════════════════
+
+✅ After completing these steps, BOTH your website AND backend
+   will run on the same cPanel server!
+
+🎉 Simple, clean, everything in one place!
+
+═══════════════════════════════════════════════════════════════
+

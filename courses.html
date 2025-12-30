@@ -35,7 +35,7 @@
                     <a href="courses.html" class="nav-link active">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a href="training-fees.html" class="nav-link">Training & Fees</a>
+                    <a href="training-fees.html" class="nav-link">Practical Course</a>
                 </li>
                 <li class="nav-item">
                     <a href="index.html#about" class="nav-link">About</a>
@@ -65,288 +65,301 @@
         </div>
     </section>
 
-    <!-- Course Filters -->
-    <section class="course-filters">
+    <!-- Level Navigation -->
+    <section class="level-navigation">
         <div class="container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All Courses</button>
-                <button class="filter-tab" data-filter="beginner">Beginner</button>
-                <button class="filter-tab" data-filter="intermediate">Intermediate</button>
-                <button class="filter-tab" data-filter="advanced">Advanced</button>
-                <button class="filter-tab" data-filter="nutrition">Nutrition</button>
+            <div class="level-tabs">
+                <button class="level-tab active" data-level="all">All Levels</button>
+                <button class="level-tab" data-level="level1">Level 1</button>
+                <button class="level-tab" data-level="level2">Level 2</button>
+                <button class="level-tab" data-level="level3">Level 3</button>
+                <button class="level-tab" data-level="gym">Gym Management</button>
             </div>
         </div>
     </section>
 
-    <!-- Courses Grid -->
+    <!-- Courses Section -->
     <section class="courses-section">
         <div class="container">
-            <div class="courses-grid">
-                <!-- Foundation Fitness Course -->
-                <div class="course-card" data-category="beginner">
-                    <div class="course-image">
-                        <div class="course-badge beginner">Beginner</div>
-                        <div class="course-overlay">
-                            <a href="#" class="course-preview-btn">Preview Course</a>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 8 Weeks</span>
-                            <span class="course-students"><i class="fas fa-users"></i> 150+ Students</span>
-                        </div>
-                        <h3 class="course-title">Foundation Fitness</h3>
-                        <p class="course-description">Perfect for beginners starting their fitness journey. Learn proper form, basic exercises, and build a strong foundation for long-term success.</p>
-                        <div class="course-features">
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Basic exercise techniques</li>
-                                <li><i class="fas fa-check"></i> Proper form instruction</li>
-                                <li><i class="fas fa-check"></i> Beginner-friendly workouts</li>
-                                <li><i class="fas fa-check"></i> Safety guidelines</li>
-                            </ul>
-                        </div>
-                        <div class="course-instructor">
-                            <div class="instructor-info">
-                                <span class="instructor-name">Coach Sarah Miller</span>
-                                <div class="instructor-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-text">4.9 (89 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price-current">₹9900</span>
-                            <span class="price-period">/8 weeks</span>
-                        </div>
-                        <a href="payment.html?plan=foundation&amount=9900&label=Foundation%20Fitness%20by%20Coach%20Sarah%20Miller" class="btn btn-primary btn-full" data-checkout data-plan="foundation" data-amount="9900" data-label="Foundation Fitness by Coach Sarah Miller">Enroll Now</a>
-                    </div>
+            
+            <!-- LEVEL 1 -->
+            <div class="level-section" data-level="level1">
+                <div class="level-header">
+                    <h2 class="level-title">
+                        <span class="level-badge">LEVEL 1</span>
+                        Foundation Certification
+                    </h2>
+                    <p class="level-description">Build a strong foundation with essential fitness knowledge and practical skills</p>
                 </div>
 
-                <!-- Muscle Building Mastery Course -->
-                <div class="course-card featured" data-category="intermediate">
-                    <div class="course-image">
-                        <div class="course-badge intermediate">Intermediate</div>
-                        <div class="course-featured-badge">Most Popular</div>
-                        <div class="course-overlay">
-                            <a href="#" class="course-preview-btn">Preview Course</a>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 12 Weeks</span>
-                            <span class="course-students"><i class="fas fa-users"></i> 300+ Students</span>
-                        </div>
-                        <h3 class="course-title">Muscle Building Mastery</h3>
-                        <p class="course-description">Comprehensive muscle building program with advanced techniques, progressive overload principles, and complete nutrition guidance.</p>
-                        <div class="course-features">
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Advanced training techniques</li>
-                                <li><i class="fas fa-check"></i> Progressive overload strategies</li>
-                                <li><i class="fas fa-check"></i> Nutrition optimization</li>
-                                <li><i class="fas fa-check"></i> Supplement guidance</li>
-                            </ul>
-                        </div>
-                        <div class="course-instructor">
-                            <div class="instructor-info">
-                                <span class="instructor-name">Coach Mike Thompson</span>
-                                <div class="instructor-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-text">4.9 (245 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price-current">₹14900</span>
-                            <span class="price-period">/12 weeks</span>
-                        </div>
-                        <a href="payment.html?plan=muscle-building&amount=14900&label=Muscle%20Building%20Mastery%20by%20Coach%20Mike%20Thompson" class="btn btn-primary btn-full" data-checkout data-plan="muscle-building" data-amount="14900" data-label="Muscle Building Mastery by Coach Mike Thompson">Enroll Now</a>
-                    </div>
-                </div>
+                <div class="courses-grid">
 
-                <!-- Weight Loss Transformation Course -->
-                <div class="course-card" data-category="beginner">
-                    <div class="course-image">
-                        <div class="course-badge beginner">Beginner</div>
-                        <div class="course-overlay">
-                            <a href="#" class="course-preview-btn">Preview Course</a>
+                    <!-- CPR - PRACTICAL -->
+                    <div class="course-card" data-category="level1">
+                        <div class="course-image">
+                            <img src="img/CPR.webp" alt="CPR Practical Training">
+                            <div class="course-badge beginner">Level 1</div>
                         </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 10 Weeks</span>
-                            <span class="course-students"><i class="fas fa-users"></i> 200+ Students</span>
-                        </div>
-                        <h3 class="course-title">Weight Loss Transformation</h3>
-                        <p class="course-description">Effective weight loss program combining cardio, strength training, and nutrition education for sustainable results.</p>
-                        <div class="course-features">
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Cardio optimization</li>
-                                <li><i class="fas fa-check"></i> Strength training for fat loss</li>
-                                <li><i class="fas fa-check"></i> Meal planning guidance</li>
-                                <li><i class="fas fa-check"></i> Habit formation strategies</li>
-                            </ul>
-                        </div>
-                        <div class="course-instructor">
-                            <div class="instructor-info">
-                                <span class="instructor-name">Coach Lisa Rodriguez</span>
-                                <div class="instructor-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-text">4.8 (156 reviews)</span>
-                                </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> Practical Training</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Certification</span>
                             </div>
+                            <h3 class="course-title">CPR - PRACTICAL</h3>
+                            <p class="course-description">Comprehensive Cardiopulmonary Resuscitation Training with hands-on practice for adults, children, and infants.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 20 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Hands-on Practical Training</li>
+                                    <li><i class="fas fa-check"></i> AED Usage Training</li>
+                                    <li><i class="fas fa-check"></i> Certification Included</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹3,000</span>
+                            </div>
+                            <a href="payment.html?course=cpr-practical&amount=3000&label=CPR%20-%20Practical" class="btn btn-primary btn-full" data-checkout data-plan="cpr-practical" data-amount="3000" data-label="CPR - Practical">Enroll Now</a>
                         </div>
-                        <div class="course-price">
-                            <span class="price-current">₹11900</span>
-                            <span class="price-period">/10 weeks</span>
-                        </div>
-                        <a href="payment.html?plan=weight-loss&amount=11900&label=Weight%20Loss%20Transformation%20by%20Coach%20Lisa%20Rodriguez" class="btn btn-primary btn-full" data-checkout data-plan="weight-loss" data-amount="11900" data-label="Weight Loss Transformation by Coach Lisa Rodriguez">Enroll Now</a>
                     </div>
-                </div>
 
-                <!-- Elite Performance Course -->
-                <div class="course-card" data-category="advanced">
-                    <div class="course-image">
-                        <div class="course-badge advanced">Advanced</div>
-                        <div class="course-overlay">
-                            <a href="#" class="course-preview-btn">Preview Course</a>
+                    <!-- DIET & NUTRITION -->
+                    <div class="course-card" data-category="level1">
+                        <div class="course-image">
+                            <img src="img/Diet and Nutrition.jpg.webp" alt="Diet & Nutrition Training">
+                            <div class="course-badge beginner">Level 1</div>
                         </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 16 Weeks</span>
-                            <span class="course-students"><i class="fas fa-users"></i> 75+ Students</span>
-                        </div>
-                        <h3 class="course-title">Elite Performance</h3>
-                        <p class="course-description">Advanced training for serious athletes and experienced lifters seeking peak performance and competition preparation.</p>
-                        <div class="course-features">
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Competition preparation</li>
-                                <li><i class="fas fa-check"></i> Advanced periodization</li>
-                                <li><i class="fas fa-check"></i> Performance optimization</li>
-                                <li><i class="fas fa-check"></i> Recovery protocols</li>
-                            </ul>
-                        </div>
-                        <div class="course-instructor">
-                            <div class="instructor-info">
-                                <span class="instructor-name">Coach David Chen</span>
-                                <div class="instructor-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-text">5.0 (42 reviews)</span>
-                                </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 30 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Certification</span>
                             </div>
+                            <h3 class="course-title">DIET & NUTRITION</h3>
+                            <p class="course-description">Complete Nutrition Science covering macros, micros, meal planning, sports nutrition, and therapeutic diets.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 30 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Macro & Micro Nutrients</li>
+                                    <li><i class="fas fa-check"></i> Meal Planning & TDEE</li>
+                                    <li><i class="fas fa-check"></i> Sports Nutrition</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹6,000</span>
+                            </div>
+                            <a href="payment.html?course=diet-nutrition&amount=6000&label=Diet%20%26%20Nutrition" class="btn btn-primary btn-full" data-checkout data-plan="diet-nutrition" data-amount="6000" data-label="Diet & Nutrition">Enroll Now</a>
                         </div>
-                        <div class="course-price">
-                            <span class="price-current">₹19900</span>
-                            <span class="price-period">/16 weeks</span>
-                        </div>
-                        <a href="payment.html?plan=elite-performance&amount=19900&label=Elite%20Performance%20by%20Coach%20David%20Chen" class="btn btn-primary btn-full" data-checkout data-plan="elite-performance" data-amount="19900" data-label="Elite Performance by Coach David Chen">Enroll Now</a>
                     </div>
-                </div>
 
-                <!-- Nutrition Mastery Course -->
-                <div class="course-card" data-category="nutrition">
-                    <div class="course-image">
-                        <div class="course-badge nutrition">Nutrition</div>
-                        <div class="course-overlay">
-                            <a href="#" class="course-preview-btn">Preview Course</a>
+                    <!-- WEIGHT LOSS MANAGEMENT -->
+                    <div class="course-card" data-category="level1">
+                        <div class="course-image">
+                            <img src="img/Weight_loss_Management.jpg.webp" alt="Weight Loss Management Training">
+                            <div class="course-badge beginner">Level 1</div>
                         </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 6 Weeks</span>
-                            <span class="course-students"><i class="fas fa-users"></i> 180+ Students</span>
-                        </div>
-                        <h3 class="course-title">Nutrition Mastery</h3>
-                        <p class="course-description">Complete nutrition education covering macronutrients, meal planning, supplementation, and sustainable eating habits.</p>
-                        <div class="course-features">
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Macronutrient education</li>
-                                <li><i class="fas fa-check"></i> Meal planning strategies</li>
-                                <li><i class="fas fa-check"></i> Supplement protocols</li>
-                                <li><i class="fas fa-check"></i> Habit formation</li>
-                            </ul>
-                        </div>
-                        <div class="course-instructor">
-                            <div class="instructor-info">
-                                <span class="instructor-name">Dr. Emily Watson</span>
-                                <div class="instructor-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-text">4.9 (128 reviews)</span>
-                                </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 40 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Certification</span>
                             </div>
-                        </div>
-                        <div class="course-price">
-                            <span class="price-current">₹7900</span>
-                            <span class="price-period">/6 weeks</span>
-                        </div>
-                        <a href="payment.html?plan=nutrition&amount=7900&label=Nutrition%20Mastery%20by%20Dr.%20Emily%20Watson" class="btn btn-primary btn-full" data-checkout data-plan="nutrition" data-amount="7900" data-label="Nutrition Mastery by Dr. Emily Watson">Enroll Now</a>
-                    </div>
-                </div>
-
-                <!-- Strength Training Course -->
-                <div class="course-card" data-category="intermediate">
-                    <div class="course-image">
-                        <div class="course-badge intermediate">Intermediate</div>
-                        <div class="course-overlay">
-                            <a href="#" class="course-preview-btn">Preview Course</a>
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-meta">
-                            <span class="course-duration"><i class="fas fa-clock"></i> 14 Weeks</span>
-                            <span class="course-students"><i class="fas fa-users"></i> 120+ Students</span>
-                        </div>
-                        <h3 class="course-title">Strength Training Fundamentals</h3>
-                        <p class="course-description">Master the art of strength training with powerlifting techniques, progressive programming, and injury prevention.</p>
-                        <div class="course-features">
-                            <ul class="feature-list">
-                                <li><i class="fas fa-check"></i> Powerlifting techniques</li>
-                                <li><i class="fas fa-check"></i> Progressive programming</li>
-                                <li><i class="fas fa-check"></i> Injury prevention</li>
-                                <li><i class="fas fa-check"></i> Competition prep</li>
-                            </ul>
-                        </div>
-                        <div class="course-instructor">
-                            <div class="instructor-info">
-                                <span class="instructor-name">Coach Alex Johnson</span>
-                                <div class="instructor-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="rating-text">4.8 (97 reviews)</span>
-                                </div>
+                            <h3 class="course-title">WEIGHT LOSS MANAGEMENT</h3>
+                            <p class="course-description">Science-based fat loss strategies covering BMI, BMR, metabolism, nutrition, and lifestyle modifications.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 40 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Fat Loss Science</li>
+                                    <li><i class="fas fa-check"></i> Health Conditions Management</li>
+                                    <li><i class="fas fa-check"></i> Lifestyle Modification</li>
+                                </ul>
                             </div>
+                            <div class="course-price">
+                                <span class="price-current">₹6,000</span>
+                            </div>
+                            <a href="payment.html?course=weight-loss-management&amount=6000&label=Weight%20Loss%20Management" class="btn btn-primary btn-full" data-checkout data-plan="weight-loss-management" data-amount="6000" data-label="Weight Loss Management">Enroll Now</a>
                         </div>
-                        <div class="course-price">
-                            <span class="price-current">₹12900</span>
-                            <span class="price-period">/14 weeks</span>
-                        </div>
-                        <a href="payment.html?plan=strength-training&amount=12900&label=Strength%20Training%20Fundamentals%20by%20Coach%20Alex%20Johnson" class="btn btn-primary btn-full" data-checkout data-plan="strength-training" data-amount="12900" data-label="Strength Training Fundamentals by Coach Alex Johnson">Enroll Now</a>
                     </div>
                 </div>
             </div>
+
+            <!-- LEVEL 2 -->
+            <div class="level-section" data-level="level2">
+                <div class="level-header">
+                    <h2 class="level-title">
+                        <span class="level-badge">LEVEL 2</span>
+                        Advanced Training Certification
+                    </h2>
+                    <p class="level-description">Master advanced techniques and specialized training methodologies</p>
+                </div>
+
+                <div class="courses-grid">
+                    <!-- DISEASE & DISORDER MANAGEMENT -->
+                    <div class="course-card" data-category="level2">
+                        <div class="course-image">
+                            <img src="img/Lifestyle_Disease&Disorder_Management.webp" alt="Disease & Disorder Management Training">
+                            <div class="course-badge intermediate">Level 2</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 30 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Certification</span>
+                            </div>
+                            <h3 class="course-title">DISEASE & DISORDER MANAGEMENT</h3>
+                            <p class="course-description">Special Population Fitness Workshop covering seniors, disabilities, chronic conditions, and inclusive programming.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 30 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Special Population Training</li>
+                                    <li><i class="fas fa-check"></i> Inclusive Programming</li>
+                                    <li><i class="fas fa-check"></i> Case Studies Included</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹8,000</span>
+                            </div>
+                            <a href="payment.html?course=disease-disorder-management&amount=8000&label=Disease%20%26%20Disorder%20Management" class="btn btn-primary btn-full" data-checkout data-plan="disease-disorder-management" data-amount="8000" data-label="Disease & Disorder Management">Enroll Now</a>
+                        </div>
+                    </div>
+
+                    <!-- STRENGTH TRAINING FUNDAMENTALS -->
+                    <div class="course-card" data-category="level2">
+                        <div class="course-image">
+                            <img src="img/Strength and conditioning.webp" alt="Strength Training Fundamentals">
+                            <div class="course-badge intermediate">Level 2</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 30 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Practical</span>
+                            </div>
+                            <h3 class="course-title">STRENGTH TRAINING FUNDAMENTALS</h3>
+                            <p class="course-description">Master strength training with proper form, progressive overload, periodization, and Olympic lifting basics.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 30 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Practical Training</li>
+                                    <li><i class="fas fa-check"></i> Olympic Lifting Basics</li>
+                                    <li><i class="fas fa-check"></i> Periodization Training</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹10,000</span>
+                            </div>
+                            <a href="payment.html?course=strength-training-fundamentals&amount=10000&label=Strength%20Training%20Fundamentals" class="btn btn-primary btn-full" data-checkout data-plan="strength-training-fundamentals" data-amount="10000" data-label="Strength Training Fundamentals">Enroll Now</a>
+                        </div>
+                    </div>
+
+                    <!-- INJURY PREVENTION -->
+                    <div class="course-card" data-category="level2">
+                        <div class="course-image">
+                            <img src="img/Injury_Prevention.webp" alt="Injury Prevention Training">
+                            <div class="course-badge intermediate">Level 2</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 30 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Certification</span>
+                            </div>
+                            <h3 class="course-title">INJURY PREVENTION</h3>
+                            <p class="course-description">Comprehensive injury prevention strategies covering warm-ups, proper techniques, recovery, and sport-specific protocols.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 30 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Sport-Specific Training</li>
+                                    <li><i class="fas fa-check"></i> Recovery Protocols</li>
+                                    <li><i class="fas fa-check"></i> Risk Assessment</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹8,000</span>
+                            </div>
+                            <a href="payment.html?course=injury-prevention&amount=8000&label=Injury%20Prevention" class="btn btn-primary btn-full" data-checkout data-plan="injury-prevention" data-amount="8000" data-label="Injury Prevention">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 3 -->
+            <div class="level-section" data-level="level3">
+                <div class="level-header">
+                    <h2 class="level-title">
+                        <span class="level-badge">LEVEL 3</span>
+                        Master Certification
+                    </h2>
+                    <p class="level-description">Elite training for competition preparation and professional excellence</p>
+                </div>
+
+                <div class="courses-grid">
+                    <!-- BODYBUILDING CONTEST PREPARATION -->
+                    <div class="course-card featured" data-category="level3">
+                        <div class="course-image">
+                            <img src="img/Bodybuilding contest preparation.jpg.webp" alt="Bodybuilding Contest Preparation">
+                            <div class="course-badge advanced">Level 3</div>
+                            <div class="course-featured-badge">Most Popular</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 50 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Master Certification</span>
+                            </div>
+                            <h3 class="course-title">BODYBUILDING CONTEST PREPARATION</h3>
+                            <p class="course-description">Complete guide to competition success covering coaching, peak week, posing, PCT, and career building in bodybuilding.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 50 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Peak Week Strategies</li>
+                                    <li><i class="fas fa-check"></i> Posing & Stage Presence</li>
+                                    <li><i class="fas fa-check"></i> Career & Business Guide</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹15,000</span>
+                            </div>
+                            <a href="payment.html?course=bodybuilding-contest-preparation&amount=15000&label=Bodybuilding%20Contest%20Preparation" class="btn btn-primary btn-full" data-checkout data-plan="bodybuilding-contest-preparation" data-amount="15000" data-label="Bodybuilding Contest Preparation">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GYM MANAGEMENT -->
+            <div class="level-section" data-level="gym">
+                <div class="level-header">
+                    <h2 class="level-title">
+                        <span class="level-badge">BUSINESS</span>
+                        Gym Setup Management Sales & Conversion
+                    </h2>
+                    <p class="level-description">Complete business training for gym owners and managers</p>
+                </div>
+
+                <div class="courses-grid">
+                    <!-- GYM SETUP MANAGEMENT SALES & CONVERSION -->
+                    <div class="course-card" data-category="business">
+                        <div class="course-image">
+                            <img src="img/Gym management sales & marketing.webp" alt="Gym Setup Management Sales & Conversion">
+                            <div class="course-badge nutrition">Business</div>
+                        </div>
+                        <div class="course-content">
+                            <div class="course-meta">
+                                <span class="course-duration"><i class="fas fa-clock"></i> 30 Topics</span>
+                                <span class="course-level"><i class="fas fa-certificate"></i> Certification</span>
+                            </div>
+                            <h3 class="course-title">GYM SETUP MANAGEMENT SALES & CONVERSION</h3>
+                            <p class="course-description">Complete business training covering gym setup, management, sales strategies, and marketing for gym success.</p>
+                            <div class="course-features">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i> 30 Comprehensive Topics</li>
+                                    <li><i class="fas fa-check"></i> Gym Setup & Design</li>
+                                    <li><i class="fas fa-check"></i> Sales & Conversion</li>
+                                    <li><i class="fas fa-check"></i> Marketing Strategies</li>
+                                </ul>
+                            </div>
+                            <div class="course-price">
+                                <span class="price-current">₹5,000</span>
+                            </div>
+                            <a href="payment.html?course=gym-management&amount=5000&label=Gym%20Setup%20Management%20Sales%20%26%20Conversion" class="btn btn-primary btn-full" data-checkout data-plan="gym-management" data-amount="5000" data-label="Gym Setup Management Sales & Conversion">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -429,10 +442,12 @@
                     </div>
                     <p class="footer-description">Transform your body with expert training and personalized fitness education.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/musclementors/" target="_blank" rel="noopener noreferrer" class="social-link" title="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/919840531177" target="_blank" rel="noopener noreferrer" class="social-link" title="Chat with us on WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -440,7 +455,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="courses.html">Courses</a></li>
-                        <li><a href="training-fees.html">Training & Fees</a></li>
+                        <li><a href="training-fees.html">Practical Course</a></li>
                         <li><a href="index.html#about">About</a></li>
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
@@ -469,6 +484,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Social Chat Buttons -->
+    <div class="floating-chat-buttons">
+        <a href="https://wa.me/919840531177?text=Hi,%20I'm%20interested%20in%20Muscle%20Mentors%20courses" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="floating-btn whatsapp-btn" 
+           title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="btn-tooltip">Chat on WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/muscle_mentors.inc?igsh=dW8zdGk4cno4YWps" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="floating-btn instagram-btn" 
+           title="Follow on Instagram">
+            <i class="fab fa-instagram"></i>
+            <span class="btn-tooltip">Follow on Instagram</span>
+        </a>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

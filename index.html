@@ -173,7 +173,7 @@
                     <a href="courses.html" class="nav-link">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a href="training-fees.html" class="nav-link">Training & Fees</a>
+                    <a href="training-fees.html" class="nav-link">Practical Course</a>
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">About</a>
@@ -202,16 +202,16 @@
             <div class="hero-image">
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">500+</span>
+                        <span class="stat-number">2000+</span>
                         <span class="stat-label">Students Trained</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">15+</span>
+                        <span class="stat-number">8+</span>
                         <span class="stat-label">Expert Trainers</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Success Rate</span>
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">placement Rate</span>
                     </div>
                 </div>
             </div>
@@ -239,13 +239,6 @@
                     </div>
                     <h3 class="feature-title">Tamil Language support</h3>
                     <p class="feature-description">South India first Tamil Language Classes</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title">Progress Tracking</h3>
-                    <p class="feature-description">Monitor your progress with detailed analytics and regular assessments.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -286,7 +279,7 @@
                     </div>
                     <div class="program-content">
                         <!-- <h3 class="program-title">Foundation Fitness</h3> -->
-                        <p class="program-description">Diet&Nutrition<br>CPR(Practical)<br>Weigntloss  Management (Level-1)<br><br>Lifestyle Disease & Disorders Management<br>Injury Prevention<br>Stength & Conditioning Practical(Level-2)<br><br>Bodybuilding Contest Preparation<br>Gym Management Sales & Marketing(Level-3)</p>
+                        <p class="program-description">Diet&Nutrition<br>CPR(Practical)<br>Weightloss  Management (Level-1)<br><br>Lifestyle Disease & Disorders Management<br>Injury Prevention<br>Stength & Conditioning Practical(Level-2)<br><br>Bodybuilding Contest Preparation<br>Gym Management Sales & Marketing(Level-3)</p>
                         <div class="program-details">
                             <span class="program-duration"><i class="fas fa-clock"></i> 6 Months</span>
                             <span class="program-level"><i class="fas fa-signal"></i> Level-1, Level-2,Level-3</span>
@@ -335,28 +328,68 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="section-header">
-                        <h2 class="section-title">About Muscle Mentors</h2>
-                        <p class="section-subtitle">Your trusted fitness education partner</p>
+                        <h2 class="section-title">About Muscle Mentors Academy</h2>
+                        <p class="section-subtitle">South India's No.1 Fitness Education Institution</p>
                     </div>
+                    
+                    <!-- Initial Short Content -->
                     <p class="about-description">
-                        With over a decade of experience in the fitness industry, Muscle Mentors has helped thousands of individuals transform their bodies and lives. Our team of certified trainers and nutritionists are dedicated to providing you with the knowledge and support you need to achieve your fitness goals.
+                        Muscle Mentors Academy has established itself as <strong>South India's No.1 fitness education institution</strong>, becoming the benchmark for scientific, career-focused fitness training. As the <strong>first academy to introduce structured fitness education fully in Tamil</strong>, it has broken long-standing language barriers and made advanced exercise science accessible to thousands. With <strong>2000+ students successfully trained</strong>, the academy continues to shape the next generation of expert coaches and fitness professionals.
                     </p>
-                    <div class="about-highlights">
+                    
+                    <!-- Expandable Content (Hidden by default) -->
+                    <div id="about-more-content" style="display: none; margin-top: 20px;">
+                        <p class="about-description">
+                            The academy's reputation is reinforced by its core faculty <strong style="color: #ff6b35;">Saravanan, Vishal, and Senthil</strong> — renowned for their deep technical expertise and uncompromising standards. Their ability to translate complex biomechanics, physiology, and nutrition principles into clear, actionable Tamil instruction has elevated the learning experience to a new level. They don't just teach — they build capability, confidence, and complete professional clarity.
+                        </p>
+                        <p class="about-description">
+                            The curriculum is structured with precision, blending <strong>scientific accuracy</strong>, <strong>hands-on practice</strong>, and <strong>real-world application</strong>. Students graduate not only with knowledge but with a competitive edge — ready to coach, guide, and lead in a rapidly growing fitness industry.
+                        </p>
+                        <p class="about-description">
+                            Muscle Mentors Academy stands as a symbol of <strong>excellence, accessibility, and progress</strong>. It is the place where ambition becomes skill, passion turns into profession, and every learner gains the tools to build a strong, credible career in fitness.
+                        </p>
+                    </div>
+                    
+                    <!-- Read More / Read Less Button -->
+                    <button id="read-more-btn" onclick="toggleAboutContent()" style="background: none; border: none; color: #ff6b35; font-weight: 600; font-size: 16px; cursor: pointer; margin-top: 15px; display: flex; align-items: center; gap: 8px; padding: 8px 0; transition: all 0.3s ease;">
+                        <span id="read-more-text">Read More</span>
+                        <i id="read-more-icon" class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <!-- PDF Brochure Download -->
+                    <div class="about-brochure" style="margin-top: 25px; background: #fff3e6; padding: 20px; border-radius: 10px; border-left: 4px solid #ff6b35;">
+                        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <h4 style="margin: 0 0 8px 0; color: #2c3e50; font-size: 16px;">
+                                    <i class="fas fa-file-pdf" style="color: #ff6b35;"></i>
+                                    Download Training Brochure
+                                </h4>
+                                <p style="margin: 0; font-size: 14px; color: #666;">Complete details about courses, fees & career opportunities</p>
+                            </div>
+                            <a href="96561.pdf" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;">
+                                <i class="fas fa-download"></i>
+                                Get Brochure
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Highlights -->
+                    <div class="about-highlights" style="margin-top: 25px;">
                         <div class="highlight">
                             <i class="fas fa-check-circle"></i>
-                            <span>Certified Professional Trainers</span>
+                            <span>First Tamil Language Fitness Academy in South India</span>
                         </div>
                         <div class="highlight">
                             <i class="fas fa-check-circle"></i>
-                            <span>Science-Based Training Methods</span>
+                            <span>Expert Faculty: Saravanan, Vishal & Senthil</span>
                         </div>
                         <div class="highlight">
                             <i class="fas fa-check-circle"></i>
-                            <span>Proven Track Record of Success</span>
+                            <span>Scientific & Career-Focused Training</span>
                         </div>
                         <div class="highlight">
                             <i class="fas fa-check-circle"></i>
-                            <span>Comprehensive Support System</span>
+                            <span>2000+ Students Successfully Trained</span>
                         </div>
                     </div>
                 </div>
@@ -365,16 +398,16 @@
                         <h3>Our Impact</h3>
                         <div class="stats-list">
                             <div class="stat-item">
-                                <span class="stat-value">10+</span>
-                                <span class="stat-text">Years Experience</span>
+                                <span class="stat-value">#1</span>
+                                <span class="stat-text">In South India</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-value">500+</span>
-                                <span class="stat-text">Success Stories</span>
+                                <span class="stat-value">2000+</span>
+                                <span class="stat-text">Students Trained</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-value">15</span>
-                                <span class="stat-text">Expert Trainers</span>
+                                <span class="stat-value">100%</span>
+                                <span class="stat-text">Tamil Education</span>
                             </div>
                         </div>
                     </div>
@@ -388,9 +421,12 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">What Our Students Say</h2>
-                <p class="section-subtitle">Real results from real people</p>
+                <p class="section-subtitle">Real testimonials from satisfied students across South India</p>
             </div>
-            <div class="testimonials-grid">
+            
+            <!-- Initial Visible Testimonials -->
+            <div class="testimonials-grid" id="testimonials-grid">
+                <!-- Testimonial 1 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <div class="testimonial-stars">
@@ -400,15 +436,17 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"Muscle Mentors transformed my approach to fitness. The personalized training program helped me gain 15lbs of muscle in just 3 months!"</p>
+                        <p class="testimonial-text">"The best part is they teach everything in clear Tamil. No confusion, no overcomplicated terms. I finally understood proper form after years of doing nonsense in gyms."</p>
                         <div class="testimonial-author">
                             <div class="author-info">
-                                <h4 class="author-name">Mike Johnson</h4>
-                                <span class="author-role">Software Engineer</span>
+                                <h4 class="author-name">Praveen Kumar</h4>
+                                <span class="author-role">Chennai</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Testimonial 2 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <div class="testimonial-stars">
@@ -418,15 +456,17 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"The nutrition guidance and workout plans are incredible. I've never felt stronger or more confident in my fitness journey."</p>
+                        <p class="testimonial-text">"Muscle Mentors explain biomechanics in such simple Tamil that even beginners can grasp instantly. Worth every rupee."</p>
                         <div class="testimonial-author">
                             <div class="author-info">
-                                <h4 class="author-name">Sarah Williams</h4>
-                                <span class="author-role">Marketing Manager</span>
+                                <h4 class="author-name">Vignesh Aravind</h4>
+                                <span class="author-role">Madurai</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Testimonial 3 -->
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <div class="testimonial-stars">
@@ -436,15 +476,286 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"Professional trainers, excellent support, and results that speak for themselves. Highly recommend Muscle Mentors!"</p>
+                        <p class="testimonial-text">"I wasted money on PTs before, but here the value is insane. Tamil-based teaching made diet and training super easy to follow."</p>
                         <div class="testimonial-author">
                             <div class="author-info">
-                                <h4 class="author-name">David Chen</h4>
-                                <span class="author-role">Business Owner</span>
+                                <h4 class="author-name">Sathish Kannan</h4>
+                                <span class="author-role">Coimbatore</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"They don't sugarcoat anything. Straightforward Tamil coaching with proper technique. Price also very reasonable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Gowtham Raj</h4>
+                                <span class="author-role">Salem</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Finally someone who teaches fitness concepts in proper Tamil! Clear, honest, and extremely practical."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Hari Prasath</h4>
+                                <span class="author-role">Tirunelveli</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Coaching is next level. Every session in Tamil, so no struggle to understand. Perfect for South Indian students."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Darshan Shetty</h4>
+                                <span class="author-role">Mangalore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden Testimonials (Show More) -->
+            <div class="testimonials-grid" id="testimonials-more" style="display: none; margin-top: 20px;">
+                <!-- Testimonial 7 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"I joined only because they teach in Tamil. Best decision. Their guidance is structured and affordable."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Rohit Sankar</h4>
+                                <span class="author-role">Bangalore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 8 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Muscle Mentors focus on technique more than ego lifting. Tamil instruction helps beginners a lot."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Manoj Varma</h4>
+                                <span class="author-role">Hyderabad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 9 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Honest trainers, easy Tamil explanations, and very reasonable pricing. Highly recommended."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Srinath Chowdary</h4>
+                                <span class="author-role">Vijayawada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 10 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"I liked their clarity. Every concept explained in simple Tamil—no English jargon. Definitely price-worthy."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Karthikeya Reddy</h4>
+                                <span class="author-role">Guntur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 11 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"They corrected my form in the first week itself. Tamil teaching makes everything super smooth."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Aravind Murali</h4>
+                                <span class="author-role">Trichy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 12 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Affordable, effective, and clear coaching. Tamil-based sessions make learning stress-free."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Yuva Bharath</h4>
+                                <span class="author-role">Erode</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 13 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Good structure, realistic diet, and perfect Tamil guidance. Worth every penny."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Ranjith Kumar</h4>
+                                <span class="author-role">Pondicherry</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 14 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"They teach the 'why' behind every movement in simple Tamil. Fantastic teaching quality."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Naveen Krishna</h4>
+                                <span class="author-role">Mysore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 15 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Learnt more in one month here than one year in my old gym. Tamil explanations = no confusion."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Vikram Dinesh</h4>
+                                <span class="author-role">Thanjavur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 16 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Very down-to-earth coaches. Full Tamil teaching, great pace, very budget-friendly."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4 class="author-name">Ashwin Bharadwaj</h4>
+                                <span class="author-role">Bangalore</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Show More Button -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button id="show-more-testimonials-btn" onclick="toggleTestimonials()" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span id="testimonials-btn-text">Show More Reviews</span>
+                    <i id="testimonials-btn-icon" class="fas fa-chevron-down"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -550,23 +861,18 @@
                      <div class="cert-slider-track">
                          <!-- Certificate 1 -->
                          <div class="cert-slide">
-                             <img src="level 1.png" alt="Certification 1" class="cert-img">
+                             <img src="Gold and Red Elegant Certificate of Appreciation _20250925_173044_0000.png" alt="Certification 1" class="cert-img">
                          </div>
                          
                          <!-- Certificate 2 -->
                          <div class="cert-slide">
-                             <img src="level 2.png" alt="Certification 2" class="cert-img">
+                             <img src="gold and red elegant certificate of appreciation _20250925_181659_0000.png" alt="Certification 2" class="cert-img">
                          </div>
                          
-                         <!-- Certificate 3 -->
-                         <div class="cert-slide">
-                             <img src="level 3.png" alt="Certification 3" class="cert-img">
-                         </div>
-                         
-                         <!-- Certificate 4 -->
-                         <div class="cert-slide">
-                             <img src="Black and Yellow Professional Achievement Certificate _20250828_132523_0000.png" alt="Certification 4" class="cert-img">
-                         </div>
+                        <!-- Certificate 3 -->
+                        <div class="cert-slide">
+                            <img src="Gold and Red Elegant Certificate of Appreciation _20251108_221416_0000.png" alt="Certification 3" class="cert-img">
+                        </div>
                      </div>
                  </div>
                  
@@ -575,13 +881,12 @@
                  </button>
              </div>
              
-             <!-- Slide Indicators -->
-             <div class="cert-indicators">
-                 <span class="cert-indicator active" onclick="setCertSlide(0)"></span>
-                 <span class="cert-indicator" onclick="setCertSlide(1)"></span>
-                 <span class="cert-indicator" onclick="setCertSlide(2)"></span>
-                 <span class="cert-indicator" onclick="setCertSlide(3)"></span>
-             </div>
+            <!-- Slide Indicators -->
+            <div class="cert-indicators">
+                <span class="cert-indicator active" onclick="setCertSlide(0)"></span>
+                <span class="cert-indicator" onclick="setCertSlide(1)"></span>
+                <span class="cert-indicator" onclick="setCertSlide(2)"></span>
+            </div>
          </div>
      </section>
     <!-- Contact Section -->
@@ -668,10 +973,12 @@
                     </div>
                     <p class="footer-description">Transform your body with expert training and personalized fitness education.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/musclementors/" target="_blank" rel="noopener noreferrer" class="social-link" title="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/919840531177" target="_blank" rel="noopener noreferrer" class="social-link" title="Chat with us on WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -679,7 +986,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="courses.html">Courses</a></li>
-                        <li><a href="training-fees.html">Training & Fees</a></li>
+                        <li><a href="training-fees.html">Practical Course</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -707,6 +1014,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Social Chat Buttons -->
+    <div class="floating-chat-buttons">
+        <a href="https://wa.me/919840531177?text=Hi,%20I'm%20interested%20in%20Muscle%20Mentors%20courses" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="floating-btn whatsapp-btn" 
+           title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="btn-tooltip">Chat on WhatsApp</span>
+        </a>
+        <a href="https://www.instagram.com/muscle_mentors.inc?igsh=dW8zdGk4cno4YWps" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="floating-btn instagram-btn" 
+           title="Follow on Instagram">
+            <i class="fab fa-instagram"></i>
+            <span class="btn-tooltip">Follow on Instagram</span>
+        </a>
+    </div>
 
     <script src="js/main.js"></script>
     
@@ -1111,5 +1438,97 @@
             }
         }
     </script>
+    
+    <!-- About Section Read More/Less Toggle -->
+    <script>
+        function toggleAboutContent() {
+            const moreContent = document.getElementById('about-more-content');
+            const readMoreText = document.getElementById('read-more-text');
+            const readMoreIcon = document.getElementById('read-more-icon');
+            const readMoreBtn = document.getElementById('read-more-btn');
+            
+            if (moreContent.style.display === 'none' || moreContent.style.display === '') {
+                // Show more content
+                moreContent.style.display = 'block';
+                readMoreText.textContent = 'Read Less';
+                readMoreIcon.className = 'fas fa-chevron-up';
+                
+                // Smooth scroll animation
+                setTimeout(() => {
+                    moreContent.style.animation = 'fadeIn 0.5s ease-in';
+                }, 10);
+            } else {
+                // Hide content
+                moreContent.style.display = 'none';
+                readMoreText.textContent = 'Read More';
+                readMoreIcon.className = 'fas fa-chevron-down';
+            }
+        }
+        
+        // Add hover effect to Read More button
+        document.addEventListener('DOMContentLoaded', function() {
+            const readMoreBtn = document.getElementById('read-more-btn');
+            if (readMoreBtn) {
+                readMoreBtn.addEventListener('mouseenter', function() {
+                    this.style.color = '#ff8c5a';
+                });
+                readMoreBtn.addEventListener('mouseleave', function() {
+                    this.style.color = '#ff6b35';
+                });
+            }
+        });
+    </script>
+    
+    <!-- Testimonials Show More/Less Toggle -->
+    <script>
+        function toggleTestimonials() {
+            const moreTestimonials = document.getElementById('testimonials-more');
+            const btnText = document.getElementById('testimonials-btn-text');
+            const btnIcon = document.getElementById('testimonials-btn-icon');
+            
+            if (moreTestimonials.style.display === 'none' || moreTestimonials.style.display === '') {
+                // Show more testimonials
+                moreTestimonials.style.display = 'grid';
+                btnText.textContent = 'Show Less Reviews';
+                btnIcon.className = 'fas fa-chevron-up';
+                
+                // Smooth scroll animation
+                setTimeout(() => {
+                    moreTestimonials.style.animation = 'fadeIn 0.5s ease-in';
+                }, 10);
+                
+                // Scroll to show new testimonials
+                setTimeout(() => {
+                    moreTestimonials.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            } else {
+                // Hide testimonials
+                moreTestimonials.style.display = 'none';
+                btnText.textContent = 'Show More Reviews';
+                btnIcon.className = 'fas fa-chevron-down';
+                
+                // Scroll back to testimonials section
+                document.querySelector('.testimonials').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    </script>
+    
+    <!-- Add fade in animation -->
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        #read-more-btn:hover {
+            transform: translateX(5px);
+        }
+    </style>
 </body>
 </html>

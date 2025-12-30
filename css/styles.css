@@ -1662,6 +1662,14 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .course-badge {
@@ -1827,6 +1835,84 @@ a:hover {
 .price-period {
     color: var(--text-secondary);
     font-size: 1rem;
+}
+
+/* Total Fee Section */
+.total-fee-section {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.total-fee-content {
+    background: linear-gradient(135deg, var(--background-light), var(--background-gray));
+    border-radius: var(--border-radius-large);
+    padding: 3rem 2rem;
+    box-shadow: var(--shadow-medium);
+    border: 2px solid var(--primary-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.total-fee-title {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.total-fee-amount {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.fee-currency {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.fee-amount {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.total-fee-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0 0 2rem 0;
+}
+
+.total-fee-btn {
+    margin-top: 1.5rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 100%;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .total-fee-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .total-fee-title {
+        font-size: 1.5rem;
+    }
+    
+    .fee-amount {
+        font-size: 2.5rem;
+    }
+    
+    .fee-currency {
+        font-size: 1.5rem;
+    }
 }
 
 /* Course Benefits */
@@ -2124,6 +2210,186 @@ a:hover {
     position: absolute;
     left: 0;
     font-weight: bold;
+}
+
+/* Practical Course Styles */
+.practical-course-featured {
+    margin-bottom: 4rem;
+}
+
+.practical-course-card {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-large);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.practical-course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.practical-course-card.featured-main {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+    border: 2px solid var(--primary-color);
+}
+
+.practical-course-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.practical-course-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    color: var(--text-light);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.practical-course-title {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.practical-course-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.practical-course-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.practical-course-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.practical-course-description p {
+    margin: 0;
+}
+
+.practical-course-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.practical-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+}
+
+.practical-feature-item i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.practical-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.practical-course-card:not(.featured-main) {
+    text-align: center;
+    padding: 2rem;
+}
+
+.practical-course-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--text-light);
+    font-size: 2rem;
+    transition: var(--transition);
+}
+
+.practical-course-card:not(.featured-main):hover .practical-course-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.practical-course-name {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.practical-course-desc {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.practical-course-details {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.practical-course-details span {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.practical-course-details span i {
+    color: var(--primary-color);
+}
+
+/* Responsive Design for Practical Courses */
+@media (max-width: 968px) {
+    .practical-course-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .practical-course-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .practical-course-title {
+        font-size: 2rem;
+    }
+    
+    .practical-course-card {
+        padding: 1.5rem;
+    }
+    
+    .practical-courses-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Add-on Services */
@@ -2723,4 +2989,520 @@ a:hover {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* ==========================================================================
+   FLOATING CHAT BUTTONS
+   ========================================================================== */
+
+.floating-chat-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.floating-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.floating-btn:active {
+    transform: translateY(-2px) scale(1.05);
+}
+
+.whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.whatsapp-btn:hover {
+    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+}
+
+.instagram-btn {
+    background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCAF45 100%);
+}
+
+.instagram-btn:hover {
+    background: linear-gradient(135deg, #FCAF45 0%, #FD1D1D 50%, #833AB4 100%);
+}
+
+.btn-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--background-dark);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: var(--background-dark);
+}
+
+.floating-btn:hover .btn-tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+}
+
+/* Responsive Design for Floating Buttons */
+@media (max-width: 768px) {
+    .floating-chat-buttons {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+    }
+
+    .floating-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 24px;
+    }
+
+    .btn-tooltip {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-chat-buttons {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+}
+
+/* ==========================================================================
+   DETAILED COURSES PAGE STYLES
+   ========================================================================== */
+
+/* Level Navigation */
+.level-navigation {
+    background: var(--background-dark);
+    padding: 2rem 0;
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    box-shadow: var(--shadow-medium);
+}
+
+.level-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.level-tab {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-family);
+}
+
+.level-tab:hover {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    transform: translateY(-2px);
+}
+
+.level-tab.active {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    box-shadow: var(--shadow-light);
+}
+
+/* Level Sections */
+.level-section {
+    margin: 4rem 0;
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.level-section.hidden {
+    display: none;
+}
+
+.level-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-gray) 100%);
+    border-radius: var(--border-radius-large);
+    border: 2px solid var(--primary-color);
+}
+
+.level-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.level-badge {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-light);
+}
+
+.level-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Detailed Course Cards */
+.detailed-course-card {
+    background: var(--background-gray);
+    border-radius: var(--border-radius-large);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+}
+
+.detailed-course-card:hover {
+    box-shadow: var(--shadow-heavy);
+    transform: translateY(-5px);
+}
+
+.course-header-expandable {
+    background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-gray) 100%);
+    padding: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.course-header-expandable:hover {
+    background: linear-gradient(135deg, var(--background-gray) 0%, var(--background-dark) 100%);
+}
+
+.course-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.course-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--background-dark);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-light);
+}
+
+.course-title-section {
+    flex: 1;
+}
+
+.course-title-main {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.course-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.expand-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--background-dark);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.expand-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.expand-btn.active {
+    transform: rotate(180deg);
+}
+
+/* Course Details */
+.course-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    background: var(--background-light);
+}
+
+.course-details.active {
+    max-height: 5000px;
+    transition: max-height 0.8s ease-in;
+    padding: 2rem;
+}
+
+.course-topics {
+    margin-bottom: 2rem;
+}
+
+.topics-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.topics-section {
+    margin-bottom: 2rem;
+}
+
+.topics-category {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    padding-left: 1rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.topic-item {
+    background: var(--background-dark);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--primary-color);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.topic-item:hover {
+    background: var(--background-gray);
+    transform: translateX(5px);
+    border-left-color: var(--primary-dark);
+}
+
+.topic-sublist {
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+    list-style: disc;
+    color: var(--text-secondary);
+}
+
+.topic-sublist li {
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.course-action {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.course-action .btn {
+    min-width: 250px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Courses */
+@media (max-width: 768px) {
+    .level-navigation {
+        top: 60px;
+        padding: 1rem 0;
+    }
+
+    .level-tabs {
+        gap: 0.5rem;
+    }
+
+    .level-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .level-title {
+        font-size: 1.75rem;
+        flex-direction: column;
+    }
+
+    .level-badge {
+        font-size: 1.25rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .course-header-content {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .course-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+
+    .course-title-main {
+        font-size: 1.5rem;
+    }
+
+    .course-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .expand-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .course-details.active {
+        padding: 1.5rem;
+    }
+
+    .topics-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .topic-item {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .topics-title {
+        font-size: 1.25rem;
+    }
+
+    .topics-category {
+        font-size: 1.1rem;
+    }
+
+    .course-action .btn {
+        min-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .level-header {
+        padding: 1.5rem 1rem;
+    }
+
+    .level-title {
+        font-size: 1.5rem;
+    }
+
+    .level-badge {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .level-description {
+        font-size: 1rem;
+    }
+
+    .course-header-expandable {
+        padding: 1.5rem;
+    }
+
+    .course-title-main {
+        font-size: 1.25rem;
+    }
+
+    .course-details.active {
+        padding: 1rem;
+    }
 }
