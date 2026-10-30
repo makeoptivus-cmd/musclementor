@@ -1,0 +1,40 @@
+[
+  {
+    "acquirer_data": {
+      "rrn": "113607279146"
+    },
+    "amount": 108,
+    "batch_id": null,
+    "created_at": 1762231052,
+    "currency": "INR",
+    "entity": "refund",
+    "id": "rfnd_RbX97lSdWz9XGx",
+    "notes": {
+      "refund_reason": "The checkout order associated to the QR is closed"
+    },
+    "payment_id": "pay_RbX95sHnJJsiYL",
+    "receipt": null,
+    "speed_processed": "normal",
+    "speed_requested": "normal",
+    "status": "processed"
+  },
+  {
+    "acquirer_data": {
+      "rrn": "113602500592"
+    },
+    "amount": 108,
+    "batch_id": null,
+    "created_at": 1762230933,
+    "currency": "INR",
+    "entity": "refund",
+    "id": "rfnd_RbX71xnFZ731Gx",
+    "notes": {
+      "refund_reason": "The checkout order associated to the QR is closed"
+    },
+    "payment_id": "pay_RbX6zqDSWG0H25",
+    "receipt": null,
+    "speed_processed": "normal",
+    "speed_requested": "normal",
+    "status": "processed"
+  }
+]

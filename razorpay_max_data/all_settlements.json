@@ -1,0 +1,178 @@
+[
+  {
+    "id": "setl_TsqyvjycTe77kq",
+    "entity": "settlement",
+    "amount": 1952800,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1513519947",
+    "created_at": 1793086860,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_Tk9QE2B2wgjgF1",
+    "entity": "settlement",
+    "amount": 585840,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1488184188",
+    "created_at": 1791186738,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_TiZ9tSusHGH4Pe",
+    "entity": "settlement",
+    "amount": 488200,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1484732576",
+    "created_at": 1790840693,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_TiASP5yjrN7SWQ",
+    "entity": "settlement",
+    "amount": 2893800,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1483483695",
+    "created_at": 1790753704,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_ThmFCwNtFKkNSt",
+    "entity": "settlement",
+    "amount": 1268730,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1482297572",
+    "created_at": 1790668435,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_TSLIHGxFEam35Z",
+    "entity": "settlement",
+    "amount": 585840,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1443716033",
+    "created_at": 1787298424,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_TRwlTVuSglrseT",
+    "entity": "settlement",
+    "amount": 976400,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1442607921",
+    "created_at": 1787212042,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_TR9jiVmAS3lVP3",
+    "entity": "settlement",
+    "amount": 976400,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1440400148",
+    "created_at": 1787039384,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_TIqFfu4zNzvkl0",
+    "entity": "settlement",
+    "amount": 2244952,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1419247652",
+    "created_at": 1785224046,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_T2DozC8nxaAPSM",
+    "entity": "settlement",
+    "amount": 1756930,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1376909398",
+    "created_at": 1781595267,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_Sx4yA9U9Llp9sN",
+    "entity": "settlement",
+    "amount": 1757520,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1363535701",
+    "created_at": 1780472393,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_SwgRC76n995ZH7",
+    "entity": "settlement",
+    "amount": 781120,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1362367650",
+    "created_at": 1780386001,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_SoNLIaais2Ext2",
+    "entity": "settlement",
+    "amount": 976400,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1340806666",
+    "created_at": 1778572035,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_S8pRnEliex2asU",
+    "entity": "settlement",
+    "amount": 1461060,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1231611328",
+    "created_at": 1769500725,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_S2p68nETZdUTBy",
+    "entity": "settlement",
+    "amount": 578760,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1217183569",
+    "created_at": 1768189454,
+    "currency": "INR"
+  },
+  {
+    "id": "setl_RcO2wBQLsx2gAr",
+    "entity": "settlement",
+    "amount": 105,
+    "status": "processed",
+    "fees": 0,
+    "tax": 0,
+    "utr": "AXISCN1144570023",
+    "created_at": 1762417346,
+    "currency": "INR"
+  }
+]
